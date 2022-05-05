@@ -5,13 +5,15 @@ import Home from "./pages/Home";
 import reportWebVitals from "./reportWebVitals";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainBlog from "./pages/MainBlog";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <React.StrictMode>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<MainBlog />} />
       </Routes>
     </React.StrictMode>
   </BrowserRouter>

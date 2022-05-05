@@ -2,10 +2,22 @@ import React, { useEffect, useState } from "react";
 import "../styles/home.css";
 import Button from "@mui/material/Button";
 import ProfileImage from "../static/images/me_pic3.jpg";
+import MyResume from "../static/mohamed_attig_cv.pdf";
 import Typewriter from "typewriter-effect";
 import Loading from "../components/Loading";
+import BlogArtical from "../components/BlogArtical";
+import DownloadIcon from "@mui/icons-material/Download";
+import Footer from "../components/Footer";
+import SiteBranding from "../components/SiteBranding";
 
 export default function Home() {
+  const onDownload = () => {
+    const link = document.createElement("a");
+    link.download = `download.pdf`;
+    link.href = MyResume;
+    link.click();
+  };
+
   const getTime = (date) => {
     return `${
       date.getHours().toString().length === 1
@@ -37,7 +49,7 @@ export default function Home() {
     setTimeout(() => {
       console.log("timeout done");
       setIsLoading(true);
-    }, 2000);
+    }, 500);
   };
   useEffect(() => {
     getQuotes();
@@ -68,43 +80,45 @@ export default function Home() {
               <span id="landing-quote">
                 <blockquote>
                   <Typewriter
+                    delay={100}
                     onInit={(typewriter) => {
-                      typewriter
-                        .typeString(quote.text)
-                        .pauseFor(1000)
-                        .deleteAll()
-                        .typeString(quote.text)
-                        .start();
+                      typewriter.typeString(quote.text).pauseFor(1000).start();
                     }}
                   />
-                  <footer>
+                  {/* <footer>
                     <cite>
                       <Typewriter
+                        skipAddStyles={true}
                         onInit={(typewriter) => {
                           typewriter.typeString(quote.author).start();
                         }}
                       />
                     </cite>
-                  </footer>
+                  </footer> */}
                 </blockquote>
               </span>
             </span>
           </div>
         ) : (
           <div className="main">
-            <div className="site-branding">
-              <a className="link-title" href="/">
-                <h1 className="site-title">Andromeda</h1>
-                <h2>
-                  Attig.M <blinking>|</blinking> Ax
-                </h2>
-              </a>
-              <div>
-                <blockquote id="site-quote">
-                  AUT VIAM INVENIAM AUT FACIAM.
-                </blockquote>
-                <cite>&mdash; Hannibal Barca</cite>
-              </div>
+            <SiteBranding />
+            <div className="switch">
+              <Button
+                size="small"
+                variant="outlined"
+                onClick={() => {
+                  onDownload();
+                }}
+                sx={{
+                  fontSize: 17,
+                  marginTop: 10,
+                  marginLeft: 5,
+                  color: "#fff",
+                }}
+                endIcon={<DownloadIcon />}
+              >
+                Download CV
+              </Button>
             </div>
             <main className="site-main">
               <div className="about">
@@ -139,6 +153,7 @@ export default function Home() {
                   </figcaption>
                 </div>
               </div>
+              <Footer />
             </main>
           </div>
         )
