@@ -5,7 +5,7 @@ const FooterWrapper = styled.div`
   width: 100%;
   height: fit-content;
   padding: 1em;
-  background-color: #000;
+  background-color: #222831;
   box-sizing: border-box;
 `;
 
@@ -60,12 +60,12 @@ function Footer() {
           <FooterLink href="#">Blog</FooterLink>
           <FooterLink href="#">About</FooterLink>
           <FooterLink href="#">Contact Us</FooterLink>
-          <FooterLink href="#">donate</FooterLink>
+          <FooterLink href="#">Donate</FooterLink>
         </FooterLinksDiv>
         <EmptyDiv />
       </FooterDivisionWrapper>
       <FooterCopyWriteText>
-        Copyright © 2022 - 2022 | M.Attig (Ax) | Andromeda .
+        Copyright © 2022 - 2022 | M.Attig (Ax) | Axtin .
       </FooterCopyWriteText>
     </FooterWrapper>
   );

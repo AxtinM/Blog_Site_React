@@ -9,3 +9,7 @@
   height: 20em;
   object-fit: cover;
 }
+
+.box {
+  margin: 1em 0;
+}

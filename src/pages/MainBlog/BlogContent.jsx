@@ -5,7 +5,7 @@ import SliderElement from "../../components/SliderElement";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import BlogAricleElement from "../../components/BlogAricleElement";
-
+import "../../styles/blog_section.css";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -35,20 +35,10 @@ const DATA = [
   },
 ];
 
-const BlogContainer = styled.div`
+const MainWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-height: 100vh;
-  background: #1a1a1a;
-`;
-
-const HeadContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  top: 0;
+  flex-direction: row;
+  column-gap: 3em;
 `;
 
 const SliderContainer = styled.div`
@@ -69,7 +59,6 @@ const SliderContainer = styled.div`
 const BlogHeaderWrapper = styled.div`
   width: fit-content;
   height: fit-content;
-  margin-bottom: 1em;
 `;
 
 const BlogHeader = styled.h1`
@@ -80,17 +69,40 @@ const BlogHeader = styled.h1`
   margin-bottom: 3px;
   margin-top: 20px;
 `;
-const BlogHeaderDevider = styled.span`
-  width: 100%;
-  height: 3px;
-  background-color: #fff;
-  display: block;
+const BlogHeaderDevider = styled.span((props) => ({
+  width: "100%",
+  height: "5px",
+  backgroundColor: "#fff",
+  display: "block",
+  marginTop: "0",
+  marginBottom: props.box ? "20px" : "2em",
+}));
+const Articles = styled.div`
+  margin: 5em 0;
+  flex-grow: 0.3;
 `;
 
-const Articles = styled.div`
-  width: 55%;
-  margin: 5em auto;
+const SideWrapper = styled.div((props) => ({
+  display: "flex",
+  flexDirection: "column",
+  flexGrow: props.grow,
+  marginTop: "14em",
+}));
+
+const SearchBox = styled.input`
+  width: 100%;
+  height: 1.5em;
+  border: 3px solid #fff;
+  border-radius: 5px;
+  background-color: inherit;
+  padding: 20px 15px;
+  font-size: 18px;
+  box-sizing: border-box;
 `;
+
+// const SideBox = styled.div((props) => ({
+//   height
+// }));
 
 function MainBlog() {
   let arr = [
@@ -139,31 +151,50 @@ function MainBlog() {
           ))}
         </Swiper>
       </SliderContainer>
-      <Articles>
-        <BlogHeaderWrapper>
-          <BlogHeader>Recent Articles</BlogHeader>
+      <MainWrapper>
+        <SideWrapper grow="1"></SideWrapper>
+        <Articles>
+          <BlogHeaderWrapper>
+            <BlogHeader>Recent Articles</BlogHeader>
+          </BlogHeaderWrapper>
           <BlogHeaderDevider></BlogHeaderDevider>
-        </BlogHeaderWrapper>
-        {arr.slice(min, max).map((x) => (
-          <BlogAricleElement />
-        ))}
-        <button
-          onClick={() => {
-            setMin(0);
-            setMax(3);
-          }}
-        >
-          1
-        </button>
-        <button
-          onClick={() => {
-            setMin(4);
-            setMax(6);
-          }}
-        >
-          2
-        </button>
-      </Articles>
+          {arr.slice(min, max).map((x) => (
+            <BlogAricleElement />
+          ))}
+          <button
+            onClick={() => {
+              setMin(0);
+              setMax(3);
+            }}
+          >
+            1
+          </button>
+          <button
+            onClick={() => {
+              setMin(4);
+              setMax(6);
+            }}
+          >
+            2
+          </button>
+        </Articles>
+        <SideWrapper grow="2">
+          <div id="search-box" className="box">
+            <BlogHeaderWrapper>
+              <BlogHeader>Search Article</BlogHeader>
+              <BlogHeaderDevider box />
+              <SearchBox />
+            </BlogHeaderWrapper>
+          </div>
+          <div id="categories-box" className="box">
+            <BlogHeaderWrapper>
+              <BlogHeader>Categories</BlogHeader>
+              <BlogHeaderDevider box />
+              <SearchBox />
+            </BlogHeaderWrapper>
+          </div>
+        </SideWrapper>
+      </MainWrapper>
     </>
   );
 }
