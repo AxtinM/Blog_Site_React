@@ -4,7 +4,7 @@ import "../styles/home.css";
 const HeadTitle = ({ headStyles }) => {
   return (
     <h1 className="site-title" style={headStyles}>
-      Andromeda
+      A
     </h1>
   );
 };

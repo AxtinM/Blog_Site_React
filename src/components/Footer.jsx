@@ -1,73 +1,74 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "@mui/material/Button";
 
-const Wrapper = styled.section`
+const FooterWrapper = styled.div`
+  width: 100%;
+  height: fit-content;
+  padding: 1em;
+  background-color: #000;
+  box-sizing: border-box;
+`;
+
+const FooterDivisionWrapper = styled.div`
+  width: 100%;
   display: flex;
-  margin: 2em auto;
-  padding: 2em;
-  background: #77777732;
-  color: white;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5em;
-  font-family: spacy;
-  font-weight: 400;
-  font-style: italic;
+  flex-direction: row;
+  margin: 50px 0;
+`;
+
+const FooterAndromeda = styled.h3`
+  font-size: calc(40px + 2vw);
+  color: #00adb5;
+  text-align: center;
+  font-family: "spacy";
+  flex-grow: 2;
+`;
+
+const FooterLinksDiv = styled.div`
+  display: flex;
   flex-direction: column;
-  justify-items: center;
-  align-items: center;
-  border-radius: 10px;
-  @media (max-width: 768px) {
-    font-size: 1em;
-  }
+  justify-content: flex-start;
+  flex-grow: 2;
 `;
 
-const FooterParagraph = styled.p`
-  font-size: 1em;
-  font-family: spacy;
-  font-weight: 400;
-  font-style: italic;
-  @media (max-width: 768px) {
-    font-size: 0.5em;
-  }
+const FooterLink = styled.a`
+  font-size: 23px;
+  font-weight: bold;
+  font-family: "spacy";
+  text-align: left;
+  color: #fff;
+  margin: 5px 0;
+  width: fit-content;
+`;
+const EmptyDiv = styled.div`
+  flex-grow: 2;
 `;
 
-const FooterTitle = styled.h1`
-  font-size: 1.5em;
-  font-family: spacy;
-  font-weight: 400;
-  font-style: italic;
-  margin-bottom: 0.5em;
-  @media (max-width: 768px) {
-    font-size: 1em;
-  }
+const FooterCopyWriteText = styled.p`
+  font-size: 15px;
+  font-weight: light;
+  font-family: "spacy";
+  text-align: center;
 `;
 
-const Footer = () => {
+function Footer() {
   return (
-    <Wrapper>
-      <FooterTitle>Welcome Back Traveler</FooterTitle>
-      <FooterParagraph>
-        You may enter the deep blue, if you want.
-      </FooterParagraph>
-      <Button
-        size="medium"
-        type="submit"
-        color="secondary"
-        onClick={() => {
-          //   setOnLanding(true);
-        }}
-        sx={{
-          fontSize: 17,
-          marginTop: 5,
-          color: "#00adb5",
-        }}
-      >
-        enter
-      </Button>
-    </Wrapper>
+    <FooterWrapper>
+      <FooterDivisionWrapper>
+        <FooterAndromeda>Axtin</FooterAndromeda>
+        <FooterLinksDiv>
+          <FooterLink href="#">Blog</FooterLink>
+          <FooterLink href="#">About</FooterLink>
+          <FooterLink href="#">Contact Us</FooterLink>
+          <FooterLink href="#">donate</FooterLink>
+        </FooterLinksDiv>
+        <EmptyDiv />
+      </FooterDivisionWrapper>
+      <FooterCopyWriteText>
+        Copyright © 2022 - 2022 | M.Attig (Ax) | Andromeda .
+      </FooterCopyWriteText>
+    </FooterWrapper>
   );
-};
+}
 
 export default Footer;

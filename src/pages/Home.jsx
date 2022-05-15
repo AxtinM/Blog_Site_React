@@ -7,7 +7,7 @@ import Typewriter from "typewriter-effect";
 import Loading from "../components/Loading";
 import BlogArtical from "../components/BlogArtical";
 import DownloadIcon from "@mui/icons-material/Download";
-import Footer from "../components/Footer";
+import EnterComponent from "../components/EnterComponent";
 import SiteBranding from "../components/SiteBranding";
 
 export default function Home() {
@@ -153,7 +153,7 @@ export default function Home() {
                   </figcaption>
                 </div>
               </div>
-              <Footer />
+              <EnterComponent />
             </main>
           </div>
         )
