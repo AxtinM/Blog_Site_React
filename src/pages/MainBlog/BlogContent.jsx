@@ -5,12 +5,12 @@ import SliderElement from "../../components/SliderElement";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import BlogAricleElement from "../../components/BlogAricleElement";
-import "../../styles/blog_section.css";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import SideElements from "../../components/side_page_components/SideElements";
 
 const DATA = [
   {
@@ -88,17 +88,6 @@ const SideWrapper = styled.div((props) => ({
   flexGrow: props.grow,
   marginTop: "14em",
 }));
-
-const SearchBox = styled.input`
-  width: 100%;
-  height: 1.5em;
-  border: 3px solid #fff;
-  border-radius: 5px;
-  background-color: inherit;
-  padding: 20px 15px;
-  font-size: 18px;
-  box-sizing: border-box;
-`;
 
 // const SideBox = styled.div((props) => ({
 //   height
@@ -178,25 +167,17 @@ function MainBlog() {
             2
           </button>
         </Articles>
-        <SideWrapper grow="2">
-          <div id="search-box" className="box">
-            <BlogHeaderWrapper>
-              <BlogHeader>Search Article</BlogHeader>
-              <BlogHeaderDevider box />
-              <SearchBox />
-            </BlogHeaderWrapper>
-          </div>
-          <div id="categories-box" className="box">
-            <BlogHeaderWrapper>
-              <BlogHeader>Categories</BlogHeader>
-              <BlogHeaderDevider box />
-              <SearchBox />
-            </BlogHeaderWrapper>
-          </div>
-        </SideWrapper>
+        <SideElements />
       </MainWrapper>
     </>
   );
 }
 
+export {
+  MainWrapper,
+  SideWrapper,
+  BlogHeaderWrapper,
+  BlogHeader,
+  BlogHeaderDevider,
+};
 export default MainBlog;

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useSpring, animated } from "react-spring";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Main = styled.nav`
   display: flex;
@@ -72,7 +73,7 @@ function NavBar() {
       <NavBarContainer>
         <NavBarLink
           style={AboutMeSpring}
-          href="/"
+          href="/attigmohamed"
           onMouseEnter={() => setAboutMeClicked(!aboutMeClicked)}
           onMouseLeave={() => setAboutMeClicked(!aboutMeClicked)}
         >
@@ -80,7 +81,7 @@ function NavBar() {
         </NavBarLink>
         <NavBarLink
           style={BlogSpring}
-          href="/"
+          href="/blog"
           onMouseEnter={() => setBlogClicked(!blogClicked)}
           onMouseLeave={() => setBlogClicked(!blogClicked)}
         >

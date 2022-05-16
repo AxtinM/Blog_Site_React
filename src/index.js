@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import MainBlogIndex from "./pages/MainBlog/MainBlogIndex";
 import BlogContent from "./pages/MainBlog/BlogContent";
+import Blog from "./pages/Blog";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,6 +16,7 @@ root.render(
       <Routes>
         <Route path="/" element={<MainBlogIndex />}>
           <Route path="/" element={<BlogContent />} />
+          <Route path="/blog" element={<Blog />} />
         </Route>
         <Route path="/attigmohamed" element={<Home />} />
       </Routes>
