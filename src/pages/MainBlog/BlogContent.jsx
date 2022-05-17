@@ -35,11 +35,12 @@ const DATA = [
   },
 ];
 
-const MainWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  column-gap: 3em;
-`;
+const MainWrapper = styled.div((props) => ({
+  display: "flex",
+  flexDirection: "row",
+  columnGap: "3em",
+  padding: props.padding,
+}));
 
 const SliderContainer = styled.div`
   width: 55%;
