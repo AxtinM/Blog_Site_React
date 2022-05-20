@@ -36,8 +36,8 @@ function MainBlog() {
   const [registerBtn, setRegisterBtn] = useState(false);
 
   const AuthModalSpring = useSpring({
-    opacity: loginBtn ? "1" : "0",
-    transform: loginBtn ? "scale(1)" : "scale(0)",
+    opacity: loginBtn || registerBtn ? "1" : "0",
+    transform: loginBtn || registerBtn ? "scale(1)" : "scale(0)",
   });
 
   return (

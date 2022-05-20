@@ -1,0 +1,26 @@
+.label-input-wrapper {
+  width: 100%;
+  color: inherit;
+  display: flex;
+  justify-content: center;
+}
+
+.button-modal-wrapper {
+  flex-grow: 1;
+  font-family: inherit;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-modal-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: inherit;
+  flex-grow: 1;
+  position: relative;
+}

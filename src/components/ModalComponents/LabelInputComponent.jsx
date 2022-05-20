@@ -6,9 +6,9 @@ import {
   ModalChangePassText,
 } from "./ModalComponents";
 
-function LabelInputComponent({ label, type, text, placeholder }) {
+function LabelInputComponent({ label, type, text, placeholder, sm }) {
   return (
-    <LabelInputWrapper>
+    <LabelInputWrapper sm>
       <ModalLable>{label}</ModalLable>
       <ModalInput type={type} placeholder={placeholder} />
 

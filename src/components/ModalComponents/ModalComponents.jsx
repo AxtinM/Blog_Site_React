@@ -61,7 +61,7 @@ const LabelInputWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 1rem 0;
+  margin: 10px 0;
 `;
 
 const ModalBtn = styled(animated.button)`

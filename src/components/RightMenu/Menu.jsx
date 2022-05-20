@@ -56,9 +56,9 @@ function Menu({ setRegisterBtn, registerBtn, setLoginBtn, loginBtn }) {
       <DropDownMenu style={MenuSpring}>
         <MenuBtn
           onClick={() => {
+            setLoginBtn(!loginBtn);
             setMenu(!menu);
             setTimeout(() => {
-              setLoginBtn(!loginBtn);
               setTopStick(!topStick);
               setMiddleStick(!middleStick);
               setBottomStick(!bottomStick);
@@ -72,7 +72,6 @@ function Menu({ setRegisterBtn, registerBtn, setLoginBtn, loginBtn }) {
             setRegisterBtn(!registerBtn);
             setMenu(!menu);
             setTimeout(() => {
-              setLoginBtn(!loginBtn);
               setTopStick(!topStick);
               setMiddleStick(!middleStick);
               setBottomStick(!bottomStick);
