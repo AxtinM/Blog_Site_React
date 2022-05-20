@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { HeadTitle } from "../../components/Title";
 import NavBar from "../../components/NavBar";
+import Menu from "../../components/RightMenu/Menu";
+import { animated, useSpring } from "react-spring";
 
 import Footer from "../../components/Footer";
 // Import Swiper styles
@@ -10,6 +12,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Outlet } from "react-router-dom";
+import AuthModalMenu from "../../components/ModalComponents/AuthModalMenu";
+import { ModalWrapper } from "../../components/ModalComponents/ModalComponents";
 
 const BlogContainer = styled.div`
   display: flex;
@@ -28,15 +32,45 @@ const HeadContainer = styled.div`
 `;
 
 function MainBlog() {
+  const [loginBtn, setLoginBtn] = useState(false);
+  const [registerBtn, setRegisterBtn] = useState(false);
+
+  const AuthModalSpring = useSpring({
+    opacity: loginBtn ? "1" : "0",
+    transform: loginBtn ? "scale(1)" : "scale(0)",
+  });
+
   return (
-    <BlogContainer>
-      <HeadContainer>
-        <HeadTitle headStyles={{ marginTop: 20 }} />
-        <NavBar />
-      </HeadContainer>
-      <Outlet />
-      <Footer />
-    </BlogContainer>
+    <>
+      <ModalWrapper
+        style={
+          loginBtn || registerBtn ? { display: "flex" } : { display: "none" }
+        }
+        className="name"
+      >
+        <AuthModalMenu
+          springStyle1={AuthModalSpring}
+          setRegisterBtn={setRegisterBtn}
+          registerBtn={registerBtn}
+          setLoginBtn={setLoginBtn}
+          loginBtn={loginBtn}
+        />
+      </ModalWrapper>
+      <BlogContainer>
+        <HeadContainer>
+          <Menu
+            setRegisterBtn={setRegisterBtn}
+            registerBtn={registerBtn}
+            setLoginBtn={setLoginBtn}
+            loginBtn={loginBtn}
+          />
+          <HeadTitle headStyles={{ marginTop: 20 }} />
+          <NavBar />
+        </HeadContainer>
+        <Outlet />
+        <Footer />
+      </BlogContainer>
+    </>
   );
 }
 

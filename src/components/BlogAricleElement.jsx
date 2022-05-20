@@ -28,7 +28,7 @@ function BlogAricleElement() {
       <TextContentWrapper>
         <SliderElementH1 noMarginTop>Article 1</SliderElementH1>
         <span
-          class="author-name"
+          className="author-name"
           style={{
             fontSize: "0.6em",
             fontWeight: "300",

@@ -7,10 +7,20 @@ import Image from "../static/images/wp5.jpg";
 import Image2 from "../static/images/wp3.jpg";
 import Image3 from "../static/images/wp6.jpg";
 import Image4 from "../static/images/wp1.jpg";
-import ArticlePaginationBtn from "../components/ArticlePaginationBtn";
+import ArticlePaginationBtn from "../components/ArticleButton/ArticlePaginationBtnLeft";
+import ArticlePaginationBtnRight from "../components/ArticleButton/ArticlePaginationBtnRight";
 
 const ArticleWrapper = styled.div`
   flex-grow: 0.1;
+`;
+
+const ButtonsWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 2.5em 0 0 0;
+  padding-right: 10px;
+  box-sizing: border-box;
 `;
 
 function Blog() {
@@ -22,7 +32,10 @@ function Blog() {
         <Article image={Image2} />
         <Article image={Image3} />
         <Article image={Image4} />
-        <ArticlePaginationBtn />
+        <ButtonsWrapper>
+          <ArticlePaginationBtn />
+          <ArticlePaginationBtnRight />
+        </ButtonsWrapper>
       </ArticleWrapper>
       <SideElements />
     </MainWrapper>

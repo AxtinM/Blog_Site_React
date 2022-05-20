@@ -67,7 +67,7 @@ function SliderElement({ title, text, author, styles }) {
       >
         <SliderElementH1>{title}</SliderElementH1>
         <span
-          class="author-name"
+          className="author-name"
           style={{
             fontSize: "0.6em",
             fontWeight: "300",

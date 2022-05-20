@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useSpring, animated } from "react-spring";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 
 const Main = styled.nav`
   display: flex;
@@ -48,7 +47,7 @@ function NavBar() {
   const [aboutClicked, setAboutClicked] = useState(false);
   const [donateClicked, setDonateClicked] = useState(false);
 
-  const AboutMeSpring = useSpring({
+  const HomeSpring = useSpring({
     transform: aboutMeClicked ? "translateY(-15px)" : "translateY(0px)",
     color: aboutMeClicked ? "#FF2E63" : "#EEEEEE",
   });
@@ -72,12 +71,12 @@ function NavBar() {
     <Main>
       <NavBarContainer>
         <NavBarLink
-          style={AboutMeSpring}
-          href="/attigmohamed"
+          style={HomeSpring}
+          href="/"
           onMouseEnter={() => setAboutMeClicked(!aboutMeClicked)}
           onMouseLeave={() => setAboutMeClicked(!aboutMeClicked)}
         >
-          About Me
+          Home
         </NavBarLink>
         <NavBarLink
           style={BlogSpring}
@@ -89,7 +88,7 @@ function NavBar() {
         </NavBarLink>
         <NavBarLink
           style={AboutSpring}
-          href="/"
+          href="/attigmohamed"
           onMouseEnter={() => setAboutClicked(!aboutClicked)}
           onMouseLeave={() => setAboutClicked(!aboutClicked)}
         >
@@ -101,7 +100,7 @@ function NavBar() {
           onMouseEnter={() => setDonateClicked(!donateClicked)}
           onMouseLeave={() => setDonateClicked(!donateClicked)}
         >
-          donate
+          Write
         </NavBarLink>
       </NavBarContainer>
       <HeadSpanLine />
