@@ -12,6 +12,13 @@ import LabelInputComponent from "./LabelInputComponent";
 
 import "../../styles/modal.css";
 
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { selectError, handleError, login } from "../../features/useSlices";
+
+// client
+import { authClient } from "../../client";
+
 function AuthModalMenu({
   springStyle1,
   setRegisterBtn,
@@ -19,11 +26,38 @@ function AuthModalMenu({
   setLoginBtn,
   loginBtn,
 }) {
+  // react-spring
   const [cross, setCross] = useState(false);
 
   const CrossSpring = useSpring({
     transform: cross ? "rotate(360deg)" : "rotate(0deg)",
   });
+
+  // redux
+  const dispatch = useDispatch();
+
+  // client functions
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+
+  const handleLogin = async (email, password) => {
+    const res = await authClient.post("/login", { email, password });
+    const data = await res.data;
+    return data;
+  };
+
+  const handleRegister = async (email, password, username, name) => {
+    const res = await authClient.post("/register", {
+      email: email,
+      password: password,
+      username: username,
+      name: name,
+    });
+    const data = await res.data;
+    return data;
+  };
 
   return (
     <ModalMenuWrapper style={springStyle1}>
@@ -63,6 +97,10 @@ function AuthModalMenu({
               label="Email"
               type="email"
               placeholder="example@mail.com"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
           </div>
           <div className="label-input-wrapper">
@@ -71,14 +109,34 @@ function AuthModalMenu({
               label="Password"
               type="password"
               text="Did You Forget Your Password?"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
           </div>
           <div className="button-modal-wrapper">
-            <ModalBtn style={{ color: "#FF2E63" }}>Login</ModalBtn>
+            <ModalBtn
+              style={{ color: "#FF2E63" }}
+              onClick={async () => {
+                try {
+                  const res = await handleLogin(email, password);
+                  console.log(res.message);
+                  dispatch(login({ user: res.user, isLoggedIn: true }));
+                } catch (err) {
+                  console.log(`------${err.response.status}------`);
+                  dispatch(handleError(err.response.data.message));
+                }
+              }}
+            >
+              Login
+            </ModalBtn>
             <ModalBtn
               onClick={() => {
                 setRegisterBtn(!registerBtn);
                 setLoginBtn(!loginBtn);
+                setEmail("");
+                setPassword("");
               }}
             >
               Register
@@ -88,16 +146,34 @@ function AuthModalMenu({
       ) : (
         <>
           <div className="label-input-wrapper">
-            <LabelInputComponent label="Name" placeholder="John Davidson" />
+            <LabelInputComponent
+              label="Name"
+              placeholder="John Davidson"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
           </div>
           <div className="label-input-wrapper">
-            <LabelInputComponent label="Alias" placeholder="TheDarkNight" />
+            <LabelInputComponent
+              label="Alias"
+              placeholder="TheDarkNight"
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+            />
           </div>
           <div className="label-input-wrapper">
             <LabelInputComponent
               label="Email"
               type="email"
               placeholder="example@mail.com"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
           </div>
           <div className="label-input-wrapper">
@@ -105,14 +181,45 @@ function AuthModalMenu({
               placeholder="***********"
               label="Password"
               type="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
           </div>
           <div className="button-modal-wrapper">
-            <ModalBtn style={{ color: "#FF2E63" }}>Register</ModalBtn>
+            <ModalBtn
+              style={{ color: "#FF2E63" }}
+              onClick={async () => {
+                try {
+                  const res = await handleRegister(
+                    email,
+                    password,
+                    username,
+                    name
+                  );
+                  setRegisterBtn(!registerBtn);
+                  setLoginBtn(!loginBtn);
+                  setEmail("");
+                  setPassword("");
+                  setUsername("");
+                  setName("");
+                } catch (err) {
+                  console.log(`------${err.response.status}------`);
+                  dispatch(handleError(err.response.data.message));
+                }
+              }}
+            >
+              Register
+            </ModalBtn>
             <ModalBtn
               onClick={() => {
                 setRegisterBtn(!registerBtn);
                 setLoginBtn(!loginBtn);
+                setEmail(null);
+                setPassword(null);
+                setUsername(null);
+                setName(null);
               }}
             >
               Login

@@ -113,6 +113,44 @@ const ModalCrossStick = styled.span((props) => ({
   transform: props.transform,
 }));
 
+const ModalErrorMessageWrapper = styled(animated.div)`
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5em 0;
+  padding: 0.6em;
+  background-color: #fff2f2;
+  color: red;
+  border-radius: 5px;
+  position: absolute;
+  top: -5em;
+`;
+
+const ModalSuccessMessageWrapper = styled(animated.div)`
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5em 0;
+  padding: 0.6em;
+  background-color: #fff2f2;
+  color: red;
+  border-radius: 5px;
+  position: absolute;
+  top: -5em;
+`;
+
+export const ErrorMsg = (props) => {
+  return (
+    <ModalErrorMessageWrapper style={props.style}>
+      <p style={{ color: "inherit" }}>{props.error}</p>
+    </ModalErrorMessageWrapper>
+  );
+};
+
 export {
   ModalWrapper,
   ModalMenuWrapper,
