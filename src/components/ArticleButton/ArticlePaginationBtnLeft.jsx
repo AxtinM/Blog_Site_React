@@ -5,9 +5,9 @@ import {
   ArticleLinkTag,
 } from "./ArticlePaginationBtnElements";
 
-function ArticlePaginationBtnLeft() {
+function ArticlePaginationBtnLeft({ style }) {
   return (
-    <ArticleButtonDiv>
+    <ArticleButtonDiv style={style}>
       <ArrowLeftTwoToneIcon />
       <ArticleLinkTag href="#">older posts</ArticleLinkTag>
     </ArticleButtonDiv>

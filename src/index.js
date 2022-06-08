@@ -1,28 +1,9 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import Home from "./pages/Home";
 import reportWebVitals from "./reportWebVitals";
-
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import MainBlogIndex from "./pages/MainBlog/MainBlogIndex";
-import BlogContent from "./pages/MainBlog/BlogContent";
-import Blog from "./pages/Blog";
+import MainRouter from "./MainRouter";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <Router>
-    <React.StrictMode>
-      <Routes>
-        <Route path="/" element={<MainBlogIndex />}>
-          <Route path="/" element={<BlogContent />} />
-          <Route path="/blog" element={<Blog />} />
-        </Route>
-        <Route path="/attigmohamed" element={<Home />} />
-      </Routes>
-    </React.StrictMode>
-  </Router>
-);
+root.render(<MainRouter />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

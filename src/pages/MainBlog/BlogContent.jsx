@@ -11,7 +11,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import SideElements from "../../components/side_page_components/SideElements";
-
+import ArticlePaginationBtnLeft from "../../components/ArticleButton/ArticlePaginationBtnLeft";
 const DATA = [
   {
     title: "New Tech And The Old Ways",
@@ -102,16 +102,7 @@ function MainBlog() {
     <BlogAricleElement />,
     <BlogAricleElement />,
     <BlogAricleElement />,
-    <BlogAricleElement />,
-    <BlogAricleElement />,
   ];
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(3);
-
-  useEffect(() => {
-    console.log("min/max changed");
-    console.log(max);
-  }, [min, max]);
 
   return (
     <>
@@ -148,25 +139,14 @@ function MainBlog() {
             <BlogHeader>Recent Articles</BlogHeader>
           </BlogHeaderWrapper>
           <BlogHeaderDevider></BlogHeaderDevider>
-          {arr.slice(min, max).map((x) => (
+          {arr.slice(0, 5).map((x) => (
             <BlogAricleElement />
           ))}
-          <button
-            onClick={() => {
-              setMin(0);
-              setMax(3);
+          <ArticlePaginationBtnLeft
+            style={{
+              marginTop: "2em",
             }}
-          >
-            1
-          </button>
-          <button
-            onClick={() => {
-              setMin(4);
-              setMax(6);
-            }}
-          >
-            2
-          </button>
+          />
         </Articles>
         <SideElements />
       </MainWrapper>
