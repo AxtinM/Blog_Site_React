@@ -26,6 +26,7 @@ import {
   selectError,
   handleError,
 } from "../../features/useSlices";
+import Profile from "../../components/RightMenu/profileMenu/Profile";
 
 const BlogContainer = styled.div`
   display: flex;
@@ -116,7 +117,7 @@ function MainBlog() {
               loginBtn={loginBtn}
             />
           ) : (
-            <></>
+            <Profile />
           )}
           <HeadTitle headStyles={{ marginTop: 20 }} />
           <NavBar />

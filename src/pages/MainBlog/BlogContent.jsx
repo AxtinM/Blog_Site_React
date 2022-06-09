@@ -63,7 +63,7 @@ const BlogHeaderWrapper = styled.div`
 `;
 
 const BlogHeader = styled.h1`
-  font-size: 1.6em;
+  font-size: 1.2em;
   font-weight: 700;
   font-family: spacy;
   color: #fff;
@@ -72,7 +72,7 @@ const BlogHeader = styled.h1`
 `;
 const BlogHeaderDevider = styled.span((props) => ({
   width: "100%",
-  height: "5px",
+  height: "4px",
   backgroundColor: "#fff",
   display: "block",
   marginTop: "0",
