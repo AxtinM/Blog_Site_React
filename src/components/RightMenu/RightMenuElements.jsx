@@ -62,6 +62,10 @@ const MenuBtn = styled(animated.button)`
   &:hover {
     color: rgb(255, 46, 99);
   }
+
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+  }
 `;
 
 export { StickElement, MenuWrapper, DropDownMenu, MenuBtn };

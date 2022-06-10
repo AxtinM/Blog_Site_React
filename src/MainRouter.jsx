@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainBlogIndex from "./pages/MainBlog/MainBlogIndex";
 import BlogContent from "./pages/MainBlog/BlogContent";
 import Blog from "./pages/Blog";
+import WriteArticle from "./pages/WriteArticle";
 
 function MainRouter() {
   return (
@@ -14,6 +15,7 @@ function MainRouter() {
           <Route path="/" element={<MainBlogIndex />}>
             <Route path="/" element={<BlogContent />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/write" element={<WriteArticle />} />
           </Route>
           <Route path="/attigmohamed" element={<Home />} />
         </Routes>

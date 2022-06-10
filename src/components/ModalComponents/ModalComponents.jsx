@@ -29,6 +29,10 @@ const ModalMenuWrapper = styled(animated.div)`
   box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
   position: relative;
   opacity: 0;
+  @media (max-width: 768px) {
+    height: 90%;
+    border: none;
+  }
 `;
 
 const ModalTitle = styled.h1`
@@ -48,7 +52,7 @@ const ModalInput = styled.input`
   border: 2px solid #222831;
   width: 100%;
   padding: 9px 15px;
-  font-size: 20px;
+  font-size: calc(0.6rem + 0.4vw);
   color: inherit;
   border-radius: 20px;
 `;

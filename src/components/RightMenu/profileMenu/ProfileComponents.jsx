@@ -105,7 +105,7 @@ const TextLabel = styled.p`
   margin: 4px 0;
 `;
 
-const ButtonChangeImg = styled.input`
+const ButtonChangeImg = styled.button`
   width: 10em;
   height: fit-content;
   border: 2px solid #fff;

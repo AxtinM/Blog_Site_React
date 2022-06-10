@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   ProfileCircle,
   ProfileImage,
@@ -13,6 +13,8 @@ import ProfileImg from "../../../static/images/ProfilePic.png";
 import { useSpring } from "react-spring";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../../features/useSlices";
+import { logout } from "../../../features/useSlices";
+import { authClient } from "../../../client";
 
 const useWindowSize = () => {
   const [size, setSize] = useState([0, 0]);
@@ -38,15 +40,37 @@ function Profile() {
     height: profileMenu ? "18em" : "0",
   });
 
-  const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const [imageUrl, setImageUrl] = useState(ProfileImg);
 
   useEffect(() => {
     setProfileMenu(false);
     // console.log(user);
   }, [width]);
 
-  console.log(user.user);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (imageUrl) {
+      setImageUrl(imageUrl);
+    }
+  }, [imageUrl]);
+
+  const dispatch = useDispatch();
+
+  const handleLogout = async () => {
+    const res = await authClient.post(
+      "/logout",
+      {},
+      {
+        headers: { Authorization: `Bearer ${user.user.token}` },
+      }
+    );
+    const data = await res.data;
+    if (data.success) {
+      dispatch(logout());
+    }
+  };
 
   return (
     <>
@@ -55,7 +79,33 @@ function Profile() {
           <Name>{user.user.username}</Name>
           <Element text={user.user.email} label="Email" />
           <Element text={user.user.name} label="Name" />
-          <ImageInput label="choose image" />
+          <input
+            ref={inputRef}
+            type="file"
+            accept="image/*"
+            style={{ display: "none" }}
+            id="contained-button-file"
+            onChange={(e) => {
+              const file = e.target.files[0];
+              setImageUrl(URL.createObjectURL(file));
+            }}
+          />
+
+          <ButtonChangeImg
+            style={{ bottom: "4em" }}
+            onClick={() => {
+              inputRef.current.click();
+            }}
+          >
+            Upload
+          </ButtonChangeImg>
+          <ButtonChangeImg
+            onClick={() => {
+              handleLogout();
+            }}
+          >
+            LogOut
+          </ButtonChangeImg>
         </InsideMenuWrapper>
       </ProfileMenuWrapper>
       <ProfileCircle
@@ -63,7 +113,7 @@ function Profile() {
           setProfileMenu(!profileMenu);
         }}
       >
-        <ProfileImage src={ProfileImg} />
+        <ProfileImage src={imageUrl} />
       </ProfileCircle>
     </>
   );

@@ -45,7 +45,7 @@ function NavBar() {
   const [aboutMeClicked, setAboutMeClicked] = useState(false);
   const [blogClicked, setBlogClicked] = useState(false);
   const [aboutClicked, setAboutClicked] = useState(false);
-  const [donateClicked, setDonateClicked] = useState(false);
+  const [writeClicked, setWriteClicked] = useState(false);
 
   const HomeSpring = useSpring({
     transform: aboutMeClicked ? "translateY(-15px)" : "translateY(0px)",
@@ -62,9 +62,9 @@ function NavBar() {
     color: aboutClicked ? "#FF2E63" : "#EEEEEE",
   });
 
-  const DonateSpring = useSpring({
-    transform: donateClicked ? "translateY(-15px)" : "translateY(0px)",
-    color: donateClicked ? "#FF2E63" : "#EEEEEE",
+  const WriteSpring = useSpring({
+    transform: writeClicked ? "translateY(-15px)" : "translateY(0px)",
+    color: writeClicked ? "#FF2E63" : "#EEEEEE",
   });
 
   return (
@@ -95,10 +95,10 @@ function NavBar() {
           About
         </NavBarLink>
         <NavBarLink
-          style={DonateSpring}
-          href="/"
-          onMouseEnter={() => setDonateClicked(!donateClicked)}
-          onMouseLeave={() => setDonateClicked(!donateClicked)}
+          style={WriteSpring}
+          href="/write"
+          onMouseEnter={() => setWriteClicked(!writeClicked)}
+          onMouseLeave={() => setWriteClicked(!writeClicked)}
         >
           Write
         </NavBarLink>
