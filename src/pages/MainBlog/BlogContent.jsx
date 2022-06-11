@@ -12,6 +12,8 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import SideElements from "../../components/side_page_components/SideElements";
 import ArticlePaginationBtnLeft from "../../components/ArticleButton/ArticlePaginationBtnLeft";
+import { useWindowSize } from "../../components/RightMenu/profileMenu/Profile";
+
 const DATA = [
   {
     title: "New Tech And The Old Ways",
@@ -55,6 +57,15 @@ const SliderContainer = styled.div`
   box-size: border-box;
   position: relative;
   overflow: hidden;
+  @media (max-width: 1750px) {
+    width: 45rem;
+  }
+  @media (max-width: 1270px) {
+    width: 90%;
+  }
+  @media (max-width: 1080px) {
+    width: 100%;
+  }
 `;
 
 const BlogHeaderWrapper = styled.div`
@@ -104,6 +115,18 @@ function MainBlog() {
     <BlogAricleElement />,
   ];
 
+  const [width, height] = useWindowSize();
+  const [isThousand, setIsThousand] = useState(false);
+  useEffect(() => {
+    if (width < 1000) {
+      setIsThousand(true);
+      console.log("first");
+    } else {
+      setIsThousand(false);
+      console.log("second");
+    }
+  });
+
   return (
     <>
       <SliderContainer>
@@ -113,11 +136,11 @@ function MainBlog() {
           slidesPerView={1}
           rewind={true}
           autoplay={{
-            delay: 2500,
+            delay: 500,
             disableOnInteraction: false,
           }}
+          navigation={isThousand ? false : true}
           centeredSlides={true}
-          navigation
           pagination={{ clickable: true }}
         >
           {DATA.map((e, i) => (

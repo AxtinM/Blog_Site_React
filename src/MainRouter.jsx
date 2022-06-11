@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainBlogIndex from "./pages/MainBlog/MainBlogIndex";
 import BlogContent from "./pages/MainBlog/BlogContent";
 import Blog from "./pages/Blog";
-import WriteArticle from "./pages/WriteArticle";
+import WriteArticle from "./pages/WritePage/WriteArticle";
 
 function MainRouter() {
   return (

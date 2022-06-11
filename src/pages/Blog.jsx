@@ -25,7 +25,7 @@ const ButtonsWrapper = styled.div`
 
 function Blog() {
   return (
-    <MainWrapper padding="3em 0">
+    <MainWrapper style={{ padding: "3em 0" }}>
       <SideWrapper grow="5" />
       <ArticleWrapper>
         <Article image={Image} />

@@ -16,7 +16,7 @@ import { selectUser } from "../../../features/useSlices";
 import { logout } from "../../../features/useSlices";
 import { authClient } from "../../../client";
 
-const useWindowSize = () => {
+export const useWindowSize = () => {
   const [size, setSize] = useState([0, 0]);
   useLayoutEffect(() => {
     const updateSize = () => {
