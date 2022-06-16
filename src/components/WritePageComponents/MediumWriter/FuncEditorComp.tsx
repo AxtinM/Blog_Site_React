@@ -8,8 +8,11 @@ import React, {
 import { EditorState } from "draft-js";
 import Editor, { createEditorStateWithText } from "@draft-js-plugins/editor";
 import createInlineToolbarPlugin from "@draft-js-plugins/inline-toolbar";
+import { DraftailEditor } from "draftail";
+import "../../../styles/medium-editor.css";
 import "../../../styles/editorStyles.css";
 import "@draft-js-plugins/inline-toolbar/lib/plugin.css";
+
 const text =
   "In this editor a toolbar shows up once you select part of the text …";
 
@@ -39,7 +42,15 @@ const SimpleInlineToolbarEditor = (): ReactElement => {
   };
 
   return (
-    <div onClick={focus}>
+    <DraftailEditor
+      editorState={editorState}
+      onChange={onChange}
+      placeholder="Tell your story..."
+      plugins={plugins}
+      ref={(element: Editor) => {
+        editor.current = element;
+      }}
+    >
       <Editor
         editorKey="SimpleInlineToolbarEditor"
         editorState={editorState}
@@ -50,7 +61,7 @@ const SimpleInlineToolbarEditor = (): ReactElement => {
         }}
       />
       <InlineToolbar />
-    </div>
+    </DraftailEditor>
   );
 };
 

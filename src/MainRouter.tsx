@@ -10,16 +10,16 @@ import WriteArticle from "./pages/WritePage/WriteArticle";
 function MainRouter() {
   return (
     <Router>
-      {/* <React.StrictMode> */}
-      <Routes>
-        <Route path="/" element={<MainBlogIndex />}>
-          <Route path="/" element={<BlogContent />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/write" element={<WriteArticle />} />
-        </Route>
-        <Route path="/attigmohamed" element={<Home />} />
-      </Routes>
-      {/* </React.StrictMode> */}
+      <React.StrictMode>
+        <Routes>
+          <Route path="/" element={<MainBlogIndex />}>
+            <Route path="/" element={<BlogContent />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/write" element={<WriteArticle />} />
+          </Route>
+          <Route path="/attigmohamed" element={<Home />} />
+        </Routes>
+      </React.StrictMode>
     </Router>
   );
 }
