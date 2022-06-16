@@ -101,6 +101,8 @@ function AuthModalMenu({
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
+              text={undefined}
+              sm={undefined}
             />
           </div>
           <div className="label-input-wrapper">
@@ -113,6 +115,7 @@ function AuthModalMenu({
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
+              sm={undefined}
             />
           </div>
           <div className="button-modal-wrapper">
@@ -153,6 +156,9 @@ function AuthModalMenu({
               onChange={(e) => {
                 setName(e.target.value);
               }}
+              type={undefined}
+              text={undefined}
+              sm={undefined}
             />
           </div>
           <div className="label-input-wrapper">
@@ -163,6 +169,9 @@ function AuthModalMenu({
               onChange={(e) => {
                 setUsername(e.target.value);
               }}
+              type={undefined}
+              text={undefined}
+              sm={undefined}
             />
           </div>
           <div className="label-input-wrapper">
@@ -174,6 +183,8 @@ function AuthModalMenu({
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
+              text={undefined}
+              sm={undefined}
             />
           </div>
           <div className="label-input-wrapper">
@@ -185,6 +196,8 @@ function AuthModalMenu({
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
+              text={undefined}
+              sm={undefined}
             />
           </div>
           <div className="button-modal-wrapper">

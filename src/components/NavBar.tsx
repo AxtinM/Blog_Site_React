@@ -30,9 +30,9 @@ const NavBarLink = styled(animated.a)`
   text-decoration: none;
   color: #eeeeee;
   padding: 10px;
-  font-size: 1em;
   font-weight: 700;
   font-family: spacy;
+  font-size: calc(13px + 0.7vw);
 `;
 
 const HeadSpanLine = styled.span`

@@ -13,8 +13,8 @@ const ModalWrapper = styled.div`
 `;
 
 const ModalMenuWrapper = styled(animated.div)`
-  height: 28em;
-  width: 23em;
+  height: 47em;
+  width: 35em;
   background-color: #fff;
   z-index: 20;
   border-radius: 25px;
@@ -69,8 +69,8 @@ const LabelInputWrapper = styled.div`
 `;
 
 const ModalBtn = styled(animated.button)`
-  height: 1.7rem;
-  width: 5rem;
+  height: fit-content;
+  width: 8rem;
   border: 2px solid #222831;
   background-color: #fff;
   color: inherit;
@@ -79,6 +79,7 @@ const ModalBtn = styled(animated.button)`
   border-radius: 20px;
   margin: 0.7em 0 0.5em 0;
   cursor: pointer;
+  padding: 5px;
   &:hover {
     background-color: #222831;
     color: #fff;

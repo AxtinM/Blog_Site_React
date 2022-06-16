@@ -29,7 +29,11 @@ function SubscribeComponent() {
       }}
     >
       <PageDeviderDiv>
-        <ParagraphWrapper>
+        <ParagraphWrapper
+          style={{
+            alignSelf: "flex-start",
+          }}
+        >
           <Header>Want to become a writer ?</Header>
           <Paragragraph>
             We are a community of writers who are passionate about writing. We
@@ -41,8 +45,13 @@ function SubscribeComponent() {
       </PageDeviderDiv>
       <PageDeviderDiv>
         <ParagraphWrapper>
-          <Paragragraph>
-            <strong>fill the form</strong> and give us an
+          <Paragragraph
+            style={{
+              fontSize: "1.4rem",
+              lineHeight: "2",
+            }}
+          >
+            <strong>Fill the form</strong> and give us an
             <strong> overview </strong>
             of who you are and what is <strong>interesting</strong> about you,
             why you want to write or what you enjoy

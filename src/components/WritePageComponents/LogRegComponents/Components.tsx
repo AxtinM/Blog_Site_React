@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { animated } from "react-spring";
 
-const HeaderText = styled.h6`
-  font-size: 1.6rem;
+const HeaderText = styled.h4`
+  font-size: 1.8rem;
   font-weight: bold;
   color: #eee;
   margin: 2em 0;
@@ -27,11 +27,11 @@ const SwitchButtonWrapper = styled(animated.div)`
 `;
 
 const SwitchButton = styled(animated.button)`
-  width: 60px;
-  height: 36px;
+  width: 5em;
+  height: 3em;
   border: none;
   font-family: spacy;
-  font-size: 0.6rem;
+  font-size: 1rem;
   color: #ff5a50;
   font-weight: 600;
 `;
@@ -66,7 +66,7 @@ const InsideFormWrapper = styled(animated.div)`
 `;
 
 const LabelText = styled.p`
-  font-size: 0.8rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: #eee;
   margin: 0;
@@ -80,7 +80,7 @@ const LabelText = styled.p`
 `;
 
 const InputBox = styled.input`
-  font-size: 0.5rem;
+  font-size: 1rem;
   width: 100%;
   height: 20px;
   border: 2px solid #eee;
@@ -96,7 +96,7 @@ const SubmitButton = styled(animated.button)`
   border: 3px solid #eee;
   background-color: inherit;
   font-family: spacy;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #ff5a50;
   border-radius: 15px;

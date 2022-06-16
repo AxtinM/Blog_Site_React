@@ -5,14 +5,16 @@ import EditIcon from "@mui/icons-material/Edit";
 import { useSpring } from "react-spring";
 
 const ProfileMenuWrapper = styled(animated.div)`
-  width: 12em;
+  width: 20em;
+  height: 25em !important;
   border-radius: 2px;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(4, 4, 5, 0.9);
   position: absolute;
   justify-content: center;
   align-items: center;
   top: -5em;
   right: 10px;
+  z-index: 10;
 `;
 
 const ProfileCircle = styled(animated.div)`
@@ -26,6 +28,7 @@ const ProfileCircle = styled(animated.div)`
   right: 20px;
   cursor: pointer;
   display: block;
+  z-index: 11;
 `;
 
 const ProfileImage = styled.img`
@@ -33,10 +36,11 @@ const ProfileImage = styled.img`
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  z-index: 100;
 `;
 
 const Name = styled.h2`
-  font-size: 0.8em;
+  font-size: 1.4em;
   color: #fff;
   margin-bottom: 1em;
   font-family: spacy;
@@ -84,7 +88,7 @@ const NormalDiv = styled.div`
 `;
 
 const TextInfo = styled.p`
-  font-size: 18px;
+  font-size: 15px;
   font-family: spacy;
   color: #fff;
 `;
@@ -100,13 +104,13 @@ const TextInput = styled.input`
 `;
 
 const TextLabel = styled.p`
-  font-size: 0.8em;
+  font-size: 1.2em;
   font-family: spacy;
   margin: 4px 0;
 `;
 
 const ButtonChangeImg = styled.button`
-  width: 10em;
+  width: 8em;
   height: fit-content;
   border: 2px solid #fff;
   padding: 10px;
@@ -118,8 +122,10 @@ const ButtonChangeImg = styled.button`
   cursor: pointer;
   position: absolute;
   bottom: 10px;
-  right: 4em;
+  left: 0;
+  transform: translateX(50%);
   display: inline-block;
+  box-sizing: content-box;
 
   &:hover {
     opacity: 1;

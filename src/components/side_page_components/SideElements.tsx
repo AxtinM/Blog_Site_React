@@ -3,9 +3,9 @@ import CategoryBox from "./CategoryBox";
 import SearchBox from "./SearchBox";
 import { SideWrapper } from "../../pages/MainBlog/BlogContent";
 
-function SideElements() {
+function SideElements({ isThousand }) {
   return (
-    <SideWrapper grow="2">
+    <SideWrapper grow="1">
       <SearchBox />
       <CategoryBox />
     </SideWrapper>

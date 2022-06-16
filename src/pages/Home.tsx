@@ -10,6 +10,11 @@ import DownloadIcon from "@mui/icons-material/Download";
 import EnterComponent from "../components/EnterComponent";
 import SiteBranding from "../components/SiteBranding";
 
+interface QuoteInterface {
+  text: string;
+  author?: string;
+}
+
 export default function Home() {
   const onDownload = () => {
     const link = document.createElement("a");
@@ -33,7 +38,7 @@ export default function Home() {
   const date = new Date();
 
   const [time, setTime] = useState(getTime(date));
-  const [quote, setQuote] = useState({});
+  const [quote, setQuote] = useState<QuoteInterface | null>();
   // const [isFetching, setIsFetching] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [onLanding, setOnLanding] = useState(true);
@@ -53,7 +58,9 @@ export default function Home() {
   };
   useEffect(() => {
     getQuotes();
-    console.log(quote.text);
+    if (quote !== undefined) {
+      console.log(quote.text);
+    }
     // const data = await quoteClient.get("quotes");
     setTimeout(() => {
       setTime(getTime(new Date()));
@@ -80,7 +87,6 @@ export default function Home() {
               <span id="landing-quote">
                 <blockquote>
                   <Typewriter
-                    delay={100}
                     onInit={(typewriter) => {
                       typewriter.typeString(quote.text).pauseFor(1000).start();
                     }}
@@ -125,20 +131,20 @@ export default function Home() {
                 <div className="about-content content-information">
                   <h1 className="content-title">About</h1>
                   <p className="content-text">
-                    <c>T</c>his blog site is written by me, Mohamed Attig | Ax,
-                    I am based in Sousse, Tunisia. I previously worked at
-                    Sastec-Group, Currently i continue to work as a freelancer,
-                    and an undergraduate student at Higher Institute of Computer
-                    Science and Communication Techniques.I've worked on a
-                    variety of projects ranging from embedded systems
-                    development to mobile development to web development. I've
-                    worked on various intriguing electronic gadgets that have
-                    given me a better grasp of how electronics operate and how
-                    to connect with them safely. I can confidently claim to know
-                    a droplet in an ocean of knowledge, but I'm also aware of
-                    and fascinated by the notion that our minds are like
-                    sponges, continually soaking up an unending supply of
-                    information.
+                    <h4 className="first-letter">T</h4>his blog site is written
+                    by me, Mohamed Attig | Ax, I am based in Sousse, Tunisia. I
+                    previously worked at Sastec-Group, Currently i continue to
+                    work as a freelancer, and an undergraduate student at Higher
+                    Institute of Computer Science and Communication
+                    Techniques.I've worked on a variety of projects ranging from
+                    embedded systems development to mobile development to web
+                    development. I've worked on various intriguing electronic
+                    gadgets that have given me a better grasp of how electronics
+                    operate and how to connect with them safely. I can
+                    confidently claim to know a droplet in an ocean of
+                    knowledge, but I'm also aware of and fascinated by the
+                    notion that our minds are like sponges, continually soaking
+                    up an unending supply of information.
                   </p>
                 </div>
                 <div className="image-content">

@@ -3,7 +3,7 @@ import { animated } from "react-spring";
 
 const StickElement = styled(animated.span)`
   height: 4px;
-  width: 1.5rem;
+  width: 100%;
   background-color: #fff;
   display: block;
   margin: 5px 0;
@@ -22,7 +22,7 @@ const VerticleStickElement = styled(animated.span)`
 
 const MenuWrapper = styled(animated.div)`
   height: fit-content;
-  width: 1.5rem;
+  width: 2rem;
   position: absolute;
   right: 20px;
   top: 20px;
@@ -45,11 +45,11 @@ const DropDownMenu = styled(animated.div)`
 `;
 
 const MenuBtn = styled(animated.button)`
-  width: 80%;
+  width: 100%;
   height: 2em;
-  border: 3px solid #fff;
+  border: 2px solid #fff;
   border-radius: 15px;
-  padding: 15px 15px;
+  padding: 15px;
   color: #fff;
   background-color: inherit;
   font-family: inherit;
@@ -57,7 +57,8 @@ const MenuBtn = styled(animated.button)`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 22px;
+  font-size: 16px;
+  box-sizing: border-box;
 
   &:hover {
     color: rgb(255, 46, 99);

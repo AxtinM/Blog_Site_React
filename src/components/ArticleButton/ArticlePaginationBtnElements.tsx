@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ArticleButtonDiv = styled.div`
-  width: 15rem;
+  width: 18rem;
   height: fit-content;
   border: 3px solid #edededed;
   color: #edededed;
@@ -19,7 +19,7 @@ const ArticleButtonDiv = styled.div`
 const ArticleLinkTag = styled.a`
   display: inline-block;
   width: 100%;
-  font-size: 0.7rem;
+  font-size: 1rem;
   line-height: 1.5;
   text-align: center;
   text-transform: uppercase;

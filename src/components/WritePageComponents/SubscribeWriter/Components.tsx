@@ -21,20 +21,21 @@ const ParagraphWrapper = styled(animated.div)`
 `;
 
 const Header = styled(animated.h6)`
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #eee;
   font-family: spacy;
   text-align: left;
   @media (max-width: 1180px) {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     align-items: center;
     text-align: center;
   }
 `;
 
 const Paragragraph = styled(animated.p)`
-  font-size: 0.6rem;
+  font-size: 1rem;
+  line-height: 1.5;
   font-weight: normal;
   color: #eee;
   margin: 1em 0;
@@ -74,10 +75,12 @@ const Box = styled(animated.div)`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   border-radius: 30px;
   padding: 2em;
   box-sizing: border-box;
+  position: relative;
+
   @media (max-width: 1100px) {
     width: 80%;
     height: 900px;
@@ -104,6 +107,7 @@ const BoxHeader = styled.div`
   background-color: #eee;
   color: #000;
   border-top-left-radius: 30px;
+  align-self: flex-start;
 `;
 
 const TextArea = styled.textarea`
@@ -112,7 +116,7 @@ const TextArea = styled.textarea`
   border: none;
   background-color: #eee;
   color: #000;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   font-family: spacy;
   padding: 1em;
   resize: none;
@@ -120,6 +124,7 @@ const TextArea = styled.textarea`
   border-radius: 10px;
   box-sizing: border-box;
   margin: 1em 0;
+
   @media (max-width: 768px) {
     font-size: 0.8rem;
     height: 30rem;
@@ -151,7 +156,7 @@ const BoxButton = styled.button`
   color: #000;
   background-color: #eee;
   border: none;
-  font-size: 0.7em;
+  font-size: 1.2em;
   font-family: spacy;
   text-transform: uppercase;
   cursor: pointer;

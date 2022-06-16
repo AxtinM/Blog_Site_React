@@ -13,9 +13,9 @@ const BlogArticleWrapper = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   height: fit-content;
-  width: 35em;
   margin-left: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 4em;
+  width: 45rem;
 `;
 const TextContentWrapper = styled.div`
   margin-left: 20px;
@@ -30,7 +30,7 @@ function BlogAricleElement() {
         <span
           className="author-name"
           style={{
-            fontSize: "0.6em",
+            fontSize: "1em",
             fontWeight: "300",
             fontFamily: "spacy",
             display: "flex",

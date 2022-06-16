@@ -3,24 +3,33 @@ import styled from "styled-components";
 import TitleLogo from "../static/images/title_logo.jpg";
 
 const SliderElementH1 = styled.h1`
-  font-size: 1.6em;
+  font-size: 1.8em;
   font-weight: 700;
   font-family: spacy;
   color: #fff;
   margin-bottom: 10px;
   margin-top: ${(props) => (props.noMarginTop ? "0" : "20px")};
+  @media (max-width: 850px) {
+    font-size: 1.5em;
+  }
 `;
 
 const SliderElementP = styled.p`
-  font-size: 0.6em;
+  font-size: 0.9rem;
   font-weight: 300;
+  width: 100%;
+  line-height: 18px;
   font-family: spacy;
   color: #eeeeee;
+  @media (max-width: 850px) {
+    font-size: 0.8rem;
+    width: 90%;
+  }
 `;
 
 const SliderAuthorName = styled.p`
   color: #ff2e63;
-  font-size: 1em;
+  font-size: 1.4em;
   font-weight: 300;
   font-family: spacy;
   margin: 10px 0;
@@ -31,6 +40,10 @@ const SliderElementImg = styled.img`
   height: 270px;
   border-radius: ${(props) => (props.rounded ? "10px" : "0")};
   object-fit: cover;
+  @media (max-width: 850px) {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 function SliderElement({ title, text, author, styles }) {
@@ -42,10 +55,16 @@ function SliderElement({ title, text, author, styles }) {
   const LinkElementWrapper = styled.div`
     height: fit-content;
     width: 150em;
-    margin: 0 auto;
+    margin: 50px auto;
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
+    @media (max-width: 850px) {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      margin: 30px 0;
+    }
   `;
 
   return (
@@ -54,7 +73,6 @@ function SliderElement({ title, text, author, styles }) {
       href="/"
       style={{
         maxWidth: "100%",
-        margin: "50px 50px",
       }}
     >
       <SliderElementImg rounded src={TitleLogo}></SliderElementImg>

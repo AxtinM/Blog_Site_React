@@ -18,6 +18,8 @@ const ButtonsDiv = styled.div`
   align-items: center;
   margin-top: 1em;
   width: 70%;
+  position: absolute;
+  bottom: 2em;
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -32,6 +34,7 @@ function WriterForm({ onChange, text, setText, onSubmit }) {
             textTransform: "uppercase",
             color: "inherit",
             fontFamily: "spacy",
+            fontSize: "1.6rem",
           }}
         >
           speak yourself
@@ -44,6 +47,7 @@ function WriterForm({ onChange, text, setText, onSubmit }) {
             textTransform: "uppercase",
             fontFamily: "spacy",
             marginBottom: "1em",
+            fontSize: "1.6rem",
           }}
         >
           Media Url

@@ -37,12 +37,16 @@ const DATA = [
   },
 ];
 
-const MainWrapper = styled.div((props) => ({
-  display: "flex",
-  flexDirection: "row",
-  columnGap: "3em",
-  padding: props.padding,
-}));
+const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  column-gap: 3em;
+  @media (max-width: 1000px) {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 
 const SliderContainer = styled.div`
   width: 55%;
@@ -69,8 +73,17 @@ const SliderContainer = styled.div`
 `;
 
 const BlogHeaderWrapper = styled.div`
-  width: fit-content;
+  width: 70%;
   height: fit-content;
+  @media (max-width: 1400px) {
+    width: 80%;
+  }
+  @media (max-width: 1200px) {
+    width: 90%;
+  }
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 const BlogHeader = styled.h1`
@@ -91,7 +104,7 @@ const BlogHeaderDevider = styled.span((props) => ({
 }));
 const Articles = styled.div`
   margin: 5em 0;
-  flex-grow: 0.3;
+  flex-grow: 1;
 `;
 
 const SideWrapper = styled.div((props) => ({
@@ -99,6 +112,10 @@ const SideWrapper = styled.div((props) => ({
   flexDirection: "column",
   flexGrow: props.grow,
   marginTop: "14em",
+  "@media (max-width: 1000px)": {
+    margin: "0 auto",
+    width: "70%",
+  },
 }));
 
 // const SideBox = styled.div((props) => ({
@@ -150,6 +167,7 @@ function MainBlog() {
                 text={e.text}
                 author={e.author}
                 key={i}
+                styles={undefined}
               />
             </SwiperSlide>
           ))}
@@ -171,7 +189,7 @@ function MainBlog() {
             }}
           />
         </Articles>
-        <SideElements />
+        <SideElements isThousand={isThousand} />
       </MainWrapper>
     </>
   );

@@ -3,12 +3,12 @@ import styled from "styled-components";
 
 const ArticleLocalWrapper = styled.div`
   height: fit-content;
-  width: 33rem;
-  margin: 1em 0;
+  width: 45rem;
+  margin: 1em auto;
 `;
 
 const ArticleImg = styled.img`
-  height: 250px;
+  height: 300px;
   width: inherit;
   background-size: cover;
   background-position: center center;
@@ -22,7 +22,7 @@ const ArticleContentWrapper = styled.div`
   background-color: #000;
   padding: 1em 1em;
   box-sizing: border-box;
-  margin: 0 0;
+  margin: 0 auto;
 `;
 
 const ArticleHeader = styled.h1`
@@ -39,10 +39,12 @@ const ArticleUnderHeaderDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-family: spacy;
 `;
 
 const ArticleUnderHeaderP = styled.p`
-  font-size: 0.75rem;
+  font-size: 0.8rem;
+  font-family: spacy;
 `;
 
 const ArticleMainContentDiv = styled.div`
@@ -52,11 +54,12 @@ const ArticleMainContentDiv = styled.div`
 `;
 
 const ArticleMainPBlock = styled.p`
-  font-size: 0.7rem;
+  font-size: 0.9em;
   margin: 0.5em 0 1em;
   overflow-wrap: break-word;
   box-sizing: border-box;
-  line-height: 1.5;
+  line-height: 1.8;
+  font-family: spacy;
 `;
 
 function Article(props) {
@@ -83,9 +86,7 @@ function Article(props) {
             The backdrop is the International Geophysical Year (IGY) where many
             nations cooperated to learn more about the Earth. In particular,
             from 1957 to 1958 there was a push to learn more about the last
-            unexplored corner of our planet: Antarctica. Several of the
-            permanent bases on the icy continent today were started during the
-            IGY.
+            unexplored corner of our planet: Antarctica. Several of the perm.
           </ArticleMainPBlock>
           <ArticleMainPBlock>
             It’s hard for modern audiences to appreciate what the state of

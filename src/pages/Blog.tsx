@@ -11,7 +11,10 @@ import ArticlePaginationBtn from "../components/ArticleButton/ArticlePaginationB
 import ArticlePaginationBtnRight from "../components/ArticleButton/ArticlePaginationBtnRight";
 
 const ArticleWrapper = styled.div`
-  flex-grow: 0.1;
+  flex-grow: 1;
+  @media (max-width: 1000px) {
+    flex-grow: 4;
+  }
 `;
 
 const ButtonsWrapper = styled.div`
@@ -26,18 +29,18 @@ const ButtonsWrapper = styled.div`
 function Blog() {
   return (
     <MainWrapper style={{ padding: "3em 0" }}>
-      <SideWrapper grow="5" />
+      <SideWrapper grow="2" />
       <ArticleWrapper>
         <Article image={Image} />
         <Article image={Image2} />
         <Article image={Image3} />
         <Article image={Image4} />
         <ButtonsWrapper>
-          <ArticlePaginationBtn />
+          <ArticlePaginationBtn style={undefined} />
           <ArticlePaginationBtnRight />
         </ButtonsWrapper>
       </ArticleWrapper>
-      <SideElements />
+      <SideElements isThousand={undefined} />
     </MainWrapper>
   );
 }
