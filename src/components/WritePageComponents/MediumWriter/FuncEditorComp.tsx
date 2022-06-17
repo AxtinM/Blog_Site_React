@@ -42,16 +42,8 @@ const SimpleInlineToolbarEditor = (): ReactElement => {
   };
 
   return (
-    <DraftailEditor
-      editorState={editorState}
-      onChange={onChange}
-      placeholder="Tell your story..."
-      plugins={plugins}
-      ref={(element: Editor) => {
-        editor.current = element;
-      }}
-    >
-      <Editor
+    <>
+      <DraftailEditor
         editorKey="SimpleInlineToolbarEditor"
         editorState={editorState}
         onChange={onChange}
@@ -59,9 +51,10 @@ const SimpleInlineToolbarEditor = (): ReactElement => {
         ref={(element) => {
           editor.current = element;
         }}
+        onFocus={focus}
       />
       <InlineToolbar />
-    </DraftailEditor>
+    </>
   );
 };
 
