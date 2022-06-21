@@ -9,14 +9,16 @@ p {
   font-size: 24px;
 }
 
-blinking {
+.blinking {
   animation-iteration-count: infinite;
   animation-name: blinking;
   animation-duration: 500ms;
+  display: inline-block;
 }
 
 .first-letter {
   font-size: 40px;
+  display: inline-block;
 }
 
 figcaption {

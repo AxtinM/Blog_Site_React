@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { selectAuthState, selectUser } from "../../features/useSlices";
 import LogRegComponent from "../../components/WritePageComponents/LogRegComponents/LogRegComponent";
 import CustomEditor from "../../components/WritePageComponents/MediumWriter/CustomEditor";
-import Editor from "../../components/WritePageComponents/MediumWriter/FuncEditorComp";
+// import Editor from "../../components/WritePageComponents/MediumWriter/FuncEditorComp";
 import SubscribeComponent from "../../components/WritePageComponents/SubscribeWriter/SubscribeComponent";
 import { useEffect, useState } from "react";
 
@@ -24,7 +24,7 @@ function WriteArticle() {
     author === false ? (
       <SubscribeComponent />
     ) : (
-      <Editor />
+      <CustomEditor />
     )
   ) : (
     <LogRegComponent />

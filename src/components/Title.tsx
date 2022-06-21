@@ -20,9 +20,9 @@ const Quote = () => {
 function Title() {
   return (
     <a className="link-title" href="/">
-      <HeadTitle />
+      <HeadTitle headStyles={undefined} />
       <h2>
-        Attig.M <blinking>|</blinking> Ax
+        Attig.M <span className="blinking">|</span> Ax
       </h2>
     </a>
   );

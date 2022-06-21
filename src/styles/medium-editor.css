@@ -12,7 +12,7 @@
   align-items: center;
 }
 
-/* .editor {
+.editor {
   font-family: sans-serif;
   text-align: center;
   display: block;
@@ -28,7 +28,7 @@
   border-radius: 15px;
   padding: 1em;
   height: fit-content;
-}  */
+}
 /* Override default */
 
 .title-input {

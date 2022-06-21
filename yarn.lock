@@ -1149,6 +1149,17 @@
     "@draft-js-plugins/buttons" "^4.0.0"
     "@draft-js-plugins/utils" "^4.0.0"
 
+"@draft-js-plugins/side-toolbar@^5.0.1":
+  "integrity" "sha512-beWjPHMFFhGjB8oBzJwL9NO3eSdQpsNOBiZb4s0BsMdff+/HcKmUfoN82eDzgh+t1N/98vHLtE6P54ZlCN0vnQ=="
+  "resolved" "https://registry.npmjs.org/@draft-js-plugins/side-toolbar/-/side-toolbar-5.0.1.tgz"
+  "version" "5.0.1"
+  dependencies:
+    "@draft-js-plugins/buttons" "^4.0.0"
+    "@draft-js-plugins/utils" "^4.0.0"
+    "@popperjs/core" "^2.11.5"
+    "prop-types" "^15.8.1"
+    "react-popper" "^2.2.5"
+
 "@draft-js-plugins/utils@^4.0.0":
   "integrity" "sha512-tQhf7a0S9ZDtOb0Mje5a+xTOT6LVDRv2LueEqqVdX4aI+oh0jjkAuP0oTiZBv6h7K9XSPgsQ08q9+kwHc3EyUg=="
   "resolved" "https://registry.npmjs.org/@draft-js-plugins/utils/-/utils-4.2.0.tgz"
@@ -4071,6 +4082,28 @@
   dependencies:
     "clsx" "^1.0.4"
 
+"draft-js-export-html@^1.4.1":
+  "integrity" "sha512-G4VGBSalPowktIE4wp3rFbhjs+Ln9IZ2FhXeHjsZDSw0a2+h+BjKu5Enq+mcsyVb51RW740GBK8Xbf7Iic51tw=="
+  "resolved" "https://registry.npmjs.org/draft-js-export-html/-/draft-js-export-html-1.4.1.tgz"
+  "version" "1.4.1"
+  dependencies:
+    "draft-js-utils" "^1.4.0"
+
+"draft-js-import-element@^1.4.0":
+  "integrity" "sha512-WmYT5PrCm47lGL5FkH6sRO3TTAcn7qNHsD3igiPqLG/RXrqyKrqN4+wBgbcT2lhna/yfWTRtgzAbQsSJoS1Meg=="
+  "resolved" "https://registry.npmjs.org/draft-js-import-element/-/draft-js-import-element-1.4.0.tgz"
+  "version" "1.4.0"
+  dependencies:
+    "draft-js-utils" "^1.4.0"
+    "synthetic-dom" "^1.4.0"
+
+"draft-js-import-html@^1.4.1":
+  "integrity" "sha512-KOZmtgxZriCDgg5Smr3Y09TjubvXe7rHPy/2fuLSsL+aSzwUDwH/aHDA/k47U+WfpmL4qgyg4oZhqx9TYJV0tg=="
+  "resolved" "https://registry.npmjs.org/draft-js-import-html/-/draft-js-import-html-1.4.1.tgz"
+  "version" "1.4.1"
+  dependencies:
+    "draft-js-import-element" "^1.4.0"
+
 "draft-js-inline-toolbar-plugin@^3.0.1":
   "integrity" "sha512-x3DyHKOnjTWHTn73Cb8ahfncKZvNECU+uuUOCq5LYCekCR7PFoHQnYIWXjoM6Mo+b7MBAsEY0uatW1N/KxinMw=="
   "resolved" "https://registry.npmjs.org/draft-js-inline-toolbar-plugin/-/draft-js-inline-toolbar-plugin-3.0.1.tgz"
@@ -4096,6 +4129,11 @@
   dependencies:
     "draft-js-buttons" "^2.0.1"
     "prop-types" "^15.5.8"
+
+"draft-js-utils@^1.4.0":
+  "integrity" "sha512-xE81Y+z/muC5D5z9qWmKfxEW1XyXfsBzSbSBk2JRsoD0yzMGGHQm/0MtuqHl/EUDkaBJJLjJ2EACycoDMY/OOg=="
+  "resolved" "https://registry.npmjs.org/draft-js-utils/-/draft-js-utils-1.4.1.tgz"
+  "version" "1.4.1"
 
 "draft-js@^0.10.5":
   "integrity" "sha512-LE6jSCV9nkPhfVX2ggcRLA4FKs6zWq9ceuO/88BpXdNCS7mjRTgs0NsV6piUCJX9YxMsB9An33wnkMmU2sD2Zg=="
@@ -7717,6 +7755,11 @@
   "resolved" "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.11.tgz"
   "version" "6.0.11"
 
+"react-fast-compare@^3.0.1":
+  "integrity" "sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA=="
+  "resolved" "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.0.tgz"
+  "version" "3.2.0"
+
 "react-icons@^4.3.1":
   "integrity" "sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ=="
   "resolved" "https://registry.npmjs.org/react-icons/-/react-icons-4.3.1.tgz"
@@ -7746,6 +7789,14 @@
   "integrity" "sha512-Vdqy79zq+bpeWJqC+xjltUjuGApyoItPgL0vgVfcJHhqwU7bAMKzysfGW/ADu6i0z0JiOCRJjo+IkFNkRNbA3A=="
   "resolved" "https://registry.npmjs.org/react-loading/-/react-loading-2.0.3.tgz"
   "version" "2.0.3"
+
+"react-popper@^2.2.5":
+  "integrity" "sha512-e1hj8lL3uM+sgSR4Lxzn5h1GxBlpa4CQz0XLF8kx4MDrDRWY0Ena4c97PUeSX9i5W3UAfDP0z0FXCTQkoXUl3Q=="
+  "resolved" "https://registry.npmjs.org/react-popper/-/react-popper-2.3.0.tgz"
+  "version" "2.3.0"
+  dependencies:
+    "react-fast-compare" "^3.0.1"
+    "warning" "^4.0.2"
 
 "react-redux@^8.0.2":
   "integrity" "sha512-nBwiscMw3NoP59NFCXFf02f8xdo+vSHT/uZ1ldDwF7XaTpzm+Phk97VT4urYBl5TYAPNVaFm12UHAEyzkpNzRA=="
@@ -8772,6 +8823,11 @@
   "resolved" "https://registry.npmjs.org/symbol-tree/-/symbol-tree-3.2.4.tgz"
   "version" "3.2.4"
 
+"synthetic-dom@^1.4.0":
+  "integrity" "sha512-mHv51ZsmZ+ShT/4s5kg+MGUIhY7Ltq4v03xpN1c8T1Krb5pScsh/lzEjyhrVD0soVDbThbd2e+4dD9vnDG4rhg=="
+  "resolved" "https://registry.npmjs.org/synthetic-dom/-/synthetic-dom-1.4.0.tgz"
+  "version" "1.4.0"
+
 "tailwindcss@^3.0.2":
   "integrity" "sha512-H3uMmZNWzG6aqmg9q07ZIRNIawoiEcNFKDfL+YzOPuPsXuDXxJxB9icqzLgdzKNwjG3SAro2h9SYav8ewXNgig=="
   "resolved" "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.0.24.tgz"
@@ -9172,6 +9228,13 @@
   "version" "1.0.8"
   dependencies:
     "makeerror" "1.0.12"
+
+"warning@^4.0.2":
+  "integrity" "sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w=="
+  "resolved" "https://registry.npmjs.org/warning/-/warning-4.0.3.tgz"
+  "version" "4.0.3"
+  dependencies:
+    "loose-envify" "^1.0.0"
 
 "watchpack@^2.3.1":
   "integrity" "sha512-x0t0JuydIo8qCNctdDrn1OzH/qDzk2+rdCOC3YzumZ42fiMqmQ7T3xQurykYMhYfHaPHTp4ZxAx2NfUo1K6QaA=="

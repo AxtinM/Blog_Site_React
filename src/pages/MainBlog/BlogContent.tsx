@@ -87,7 +87,6 @@ const BlogHeaderWrapper = styled.div`
 `;
 
 const BlogHeader = styled.h1`
-  font-size: 1.2em;
   font-weight: 700;
   font-family: spacy;
   color: #fff;

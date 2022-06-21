@@ -172,12 +172,6 @@ function LogRegComponent() {
     transform: loginBtn ? "translateX(500%)" : "translateX(0)",
     display: loginBtn ? "none" : "flex",
   });
-  LoginSpring.onChange = (spring) => {
-    console.log(spring);
-  };
-  RegisterSpring.onChange = (spring) => {
-    console.log(spring);
-  };
 
   return (
     <div id="write-login">

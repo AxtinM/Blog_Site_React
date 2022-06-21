@@ -58,7 +58,12 @@ function SubscribeComponent() {
             <strong> reading and writing about.</strong>
           </Paragragraph>
         </ParagraphWrapper>
-        <WriterForm onChange={handleChange} text={text} setText={setText} />
+        <WriterForm
+          onChange={handleChange}
+          text={text}
+          setText={setText}
+          onSubmit={undefined}
+        />
       </PageDeviderDiv>
     </div>
   );
