@@ -1,6 +1,6 @@
 import React from "react";
 import { DraftailEditor } from "draftail";
-import { EditorState, ContentState } from "draft-js";
+import { EditorState } from "draft-js";
 import createInlineToolbarPlugin from "draft-js-inline-toolbar-plugin";
 import createSideToolbarPlugin from "draft-js-side-toolbar-plugin";
 import "../../../styles/medium-editor.css";
@@ -56,12 +56,9 @@ class App extends React.Component {
       isImageSpring: false,
       title: "",
       user: {},
+      file: "",
     };
     this.changeState = this.changeState.bind(this);
-    // const user = useSelector(selectUser);
-    const mapStateToProps = (state) => ({
-      user: state.user.user,
-    });
   }
   changeState(state) {
     this.setState({
@@ -89,6 +86,7 @@ class App extends React.Component {
     const article = {
       title: this.state.title,
       image: this.state.isImage ? this.state.image : null,
+      file: this.state.file,
       content: this.htmlToString(),
     };
     articleClient
@@ -98,10 +96,12 @@ class App extends React.Component {
         },
       })
       .then((res) => {
-        alert("Success : \n", res.data);
+        alert("Success : \n", res);
+        console.log(res);
       })
       .catch((err) => {
         alert("Error : \n", err);
+        console.log("Error");
       });
   }
 
@@ -117,7 +117,7 @@ class App extends React.Component {
               this.setState({ title: e.target.value });
             }}
           />
-          {this.state.isImage == true ? (
+          {this.state.isImage === true ? (
             <Spring scale={this.state.isImageSpring ? 1 : 0}>
               {(styles) => (
                 <animated.img
@@ -128,6 +128,7 @@ class App extends React.Component {
                     setTimeout(() => {
                       this.setIsImage(false);
                       this.setImage(null);
+                      URL.revokeObjectURL(this.state.image);
                     }, 500);
                   }}
                 />
@@ -148,9 +149,11 @@ class App extends React.Component {
             accept="image/*"
             style={{ display: "none" }}
             id="contained-button-file"
-            onChange={(e) => {
-              const file = e.target.files[0];
-              this.setImage(URL.createObjectURL(file));
+            onChange={async (e) => {
+              const _file = e.target.files[0];
+              console.log(await _file.stream().getReader());
+              this.setState({ file: _file.stream() });
+              this.setImage(URL.createObjectURL(_file));
               this.setIsImage(true);
               this.setState({ isImageSpring: true });
             }}
@@ -169,10 +172,20 @@ class App extends React.Component {
         <div className="buttons">
           <button
             onClick={() => {
-              console.log(this.stringToHtml());
               this.setState({
                 editorState: EditorState.createWithContent(this.stringToHtml()),
               });
+              const _title = window.sessionStorage.getItem("title");
+              if (_title !== null) {
+                this.setState({ title: _title });
+              }
+
+              const _image = window.sessionStorage.getItem("image");
+
+              if (_image !== null) {
+                this.setState({ image: _image });
+                this.setState({ isImage: true, isImageSpring: true });
+              }
             }}
           >
             Re-load
@@ -180,6 +193,8 @@ class App extends React.Component {
           <button
             onClick={() => {
               window.sessionStorage.setItem("content", this.htmlToString());
+              window.sessionStorage.setItem("title", this.state.title);
+              window.sessionStorage.setItem("image", this.state.image);
             }}
           >
             save
