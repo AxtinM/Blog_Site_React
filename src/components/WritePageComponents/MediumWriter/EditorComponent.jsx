@@ -88,6 +88,7 @@ class App extends React.Component {
   createArticle() {
     const article = {
       title: this.state.title,
+      image: this.state.isImage ? this.state.image : null,
       content: this.htmlToString(),
     };
     articleClient
@@ -95,13 +96,12 @@ class App extends React.Component {
         headers: {
           Authorization: `Bearer ${this.props.user.token}`,
         },
-        data: this.isImage ? this.state.image : null,
       })
       .then((res) => {
-        alert(res);
+        alert("Success : \n", res.data);
       })
       .catch((err) => {
-        alert(err);
+        alert("Error : \n", err);
       });
   }
 
