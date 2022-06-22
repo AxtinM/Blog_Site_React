@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import parse from "html-react-parser";
 import "../styles/article.css";
+import { NavLink } from "react-router-dom";
 
 const ArticleLocalWrapper = styled.div`
   height: fit-content;
@@ -46,12 +47,14 @@ const ArticleUnderHeaderDiv = styled.div`
 const ArticleUnderHeaderP = styled.p`
   font-size: 1rem;
   font-family: spacy;
+  color: #ff2e63;
 `;
 
 const ArticleMainContentDiv = styled.div`
   height: fit-content;
   width: 100%;
   margin: 1em 0;
+  padding: 0 1em;
 `;
 
 function Article(props) {
@@ -76,6 +79,17 @@ function Article(props) {
         <ArticleMainContentDiv>
           {parse(props.data.content)}
         </ArticleMainContentDiv>
+        <NavLink
+          to="/article/1"
+          style={{
+            color: "#ff2e63",
+            margin: "0 2em",
+            fontSize: "1.1em",
+            fontFamily: "spacy",
+          }}
+        >
+          Continue..
+        </NavLink>
       </ArticleContentWrapper>
     </ArticleLocalWrapper>
   );

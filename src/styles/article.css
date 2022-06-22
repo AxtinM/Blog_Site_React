@@ -1,14 +1,24 @@
 h1 {
   font-size: 1.8em;
-  margin: 5px;
+  margin: 10px 5px;
 }
 
 h2 {
   font-size: 1.6em;
-  margin: 5px;
+  margin: 10px 5px;
 }
 
 p {
   font-size: 1.1em;
-  margin: 10px;
+  margin: 0 10px;
+}
+
+ul {
+  font-size: 1.1em;
+  margin: 0 1.5em;
+}
+
+ol {
+  font-size: 1.1em;
+  margin: 0 1.5em;
 }
