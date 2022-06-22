@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Article from "../components/Article";
 import { MainWrapper, SideWrapper } from "./MainBlog/BlogContent";
@@ -10,12 +10,14 @@ import Image4 from "../static/images/wp1.jpg";
 import ArticlePaginationBtn from "../components/ArticleButton/ArticlePaginationBtnLeft";
 import ArticlePaginationBtnRight from "../components/ArticleButton/ArticlePaginationBtnRight";
 import { articleClient } from "../client";
+import { useParams } from "react-router-dom";
+import Loading from "../components/Loading";
 
-const getArticle = async (num: number | string) => {
+const getArticle = async (num) => {
   try {
     const res = await articleClient.get(`/${num}`);
     const data = await res.data;
-    console.log(data);
+    return data;
   } catch (err) {
     console.log(err);
     alert("There is an Error getting articles");
@@ -39,14 +41,30 @@ const ButtonsWrapper = styled.div`
 `;
 
 function Blog() {
-  return (
+  const { num } = useParams();
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    getArticle(num)
+      .then((res) => {
+        console.log(res.articles);
+        setData(res.articles);
+      })
+      .catch((err) => {
+        console.log("ERR : ", err);
+      });
+    console.log(data);
+  }, []);
+
+  return data === null ? (
+    <Loading />
+  ) : (
     <MainWrapper style={{ padding: "3em 0" }}>
       <SideWrapper grow="2" />
       <ArticleWrapper>
-        <Article image={Image} />
-        <Article image={Image2} />
-        <Article image={Image3} />
-        <Article image={Image4} />
+        {data.map((_article, i) => (
+          <Article key={i} data={_article} />
+        ))}
         <ButtonsWrapper>
           <ArticlePaginationBtn style={undefined} />
           <ArticlePaginationBtnRight />

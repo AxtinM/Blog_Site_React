@@ -16,6 +16,7 @@ function LabelInputComponent({
   onChange,
 }) {
   return (
+    // @ts-ignore
     <LabelInputWrapper sm>
       <ModalLable>{label}</ModalLable>
       <ModalInput

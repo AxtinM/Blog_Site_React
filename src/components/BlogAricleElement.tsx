@@ -26,6 +26,7 @@ function BlogAricleElement() {
     <BlogArticleWrapper>
       <SliderElementImg src={ImageArticle} />
       <TextContentWrapper>
+        {/* @ts-ignore */}
         <SliderElementH1 noMarginTop>Article 1</SliderElementH1>
         <span
           className="author-name"

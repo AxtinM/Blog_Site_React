@@ -1,5 +1,6 @@
-import React from "react";
 import styled from "styled-components";
+import parse from "html-react-parser";
+import "../styles/article.css";
 
 const ArticleLocalWrapper = styled.div`
   height: fit-content;
@@ -26,7 +27,7 @@ const ArticleContentWrapper = styled.div`
 `;
 
 const ArticleHeader = styled.h1`
-  font-size: 1.6em;
+  font-size: 2em;
   font-weight: 700;
   font-family: spacy;
   color: #fff;
@@ -43,7 +44,7 @@ const ArticleUnderHeaderDiv = styled.div`
 `;
 
 const ArticleUnderHeaderP = styled.p`
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-family: spacy;
 `;
 
@@ -53,66 +54,27 @@ const ArticleMainContentDiv = styled.div`
   margin: 1em 0;
 `;
 
-const ArticleMainPBlock = styled.p`
-  font-size: 0.9em;
-  margin: 0.5em 0 1em;
-  overflow-wrap: break-word;
-  box-sizing: border-box;
-  line-height: 1.8;
-  font-family: spacy;
-`;
-
 function Article(props) {
+  const path: any = props.data.imageHeadline.path.split("/");
+  console.log(props.data);
+  const _len: number = path.length - 1;
   return (
     <ArticleLocalWrapper>
-      <ArticleImg src={props.image} />
+      <ArticleImg src={`http://localhost:8000/images/${path[_len]}`} />
       <ArticleContentWrapper>
-        <ArticleHeader>
-          When Hams Helped Polar Researchers Come In From The Cold
-        </ArticleHeader>
+        <ArticleHeader>{props.data.title}</ArticleHeader>
         <ArticleUnderHeaderDiv>
-          <ArticleUnderHeaderP>May 17, 2022 by Al Williams</ArticleUnderHeaderP>
-          <ArticleUnderHeaderP>No comments</ArticleUnderHeaderP>
+          <ArticleUnderHeaderP>
+            May 17, 2022 by {props.data.author.username}{" "}
+          </ArticleUnderHeaderP>
+          <ArticleUnderHeaderP>
+            {props.data.comments.length === 0
+              ? "No comments"
+              : props.data.comments.length}
+          </ArticleUnderHeaderP>
         </ArticleUnderHeaderDiv>
         <ArticleMainContentDiv>
-          <ArticleMainPBlock>
-            We always enjoy [The History Guy] videos, although many of them
-            aren’t much about technology. However, when he does cover tech
-            topics, he does it well and his recent video on how ham radio
-            operators assisted in operation Deep Freeze is a great example. You
-            can watch the video, below.
-          </ArticleMainPBlock>
-          <ArticleMainPBlock>
-            The backdrop is the International Geophysical Year (IGY) where many
-            nations cooperated to learn more about the Earth. In particular,
-            from 1957 to 1958 there was a push to learn more about the last
-            unexplored corner of our planet: Antarctica. Several of the perm.
-          </ArticleMainPBlock>
-          <ArticleMainPBlock>
-            It’s hard for modern audiences to appreciate what the state of
-            personal communication was in 1957. There were no cell phones and if
-            you are thinking about satellites, don’t forget that Sputnik didn’t
-            launch until late 1957, so that wasn’t going to happen, either.
-          </ArticleMainPBlock>
-          <ArticleMainPBlock>
-            Operation Deep Freeze had ten U. S. Navy vessels that brought
-            scientists, planes, and Seabees (slang for members of the Naval
-            Construction Batallion) — about 1,800 people in all over several
-            years culminating in the IGY. Of course, the Navy had radio
-            capabilities, but it wasn’t like the Navy to let you just call home
-            to chat. Not to mention, a little more than 100 people were left for
-            each winter and the Navy ships went home. That’s where ham radio
-            operators came in.
-          </ArticleMainPBlock>
-          <ArticleMainPBlock>
-            Hams would do what is called a phone patch for the people stationed
-            in Antarctica. Some hams also send radiograms to and from the crew’s
-            families. One teen named Jules was especially dedicated to making
-            connections to Antarctica. We can’t verify it, but one commenter
-            says that Jules was so instrumental in connecting his father in
-            Antarctica to his fiancee that when his parents married, Jules was
-            their best man.
-          </ArticleMainPBlock>
+          {parse(props.data.content)}
         </ArticleMainContentDiv>
       </ArticleContentWrapper>
     </ArticleLocalWrapper>

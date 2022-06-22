@@ -115,6 +115,7 @@ const ModalCrossStick = styled.span((props) => ({
   backgroundColor: "#ff2e63",
   display: "block",
   borderRadius: "5px",
+  // @ts-ignore
   transform: props.transform,
 }));
 

@@ -86,7 +86,9 @@ function AuthModalMenu({
             setLoginBtn(false);
           }}
         >
+          {/* @ts-ignore */}
           <ModalCrossStick transform="translateY(2px) rotate(45deg)" />
+          {/* @ts-ignore */}
           <ModalCrossStick transform="translateY(-2px) rotate(-45deg)" />
         </ModalCrossWrapper>
       </div>
