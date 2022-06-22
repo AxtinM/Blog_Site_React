@@ -105,7 +105,7 @@ function NavBar() {
         >
           Home
         </NavBarLink>
-        <Link className="nav-element" to="/blog" ref={blogRef} />
+        <Link className="nav-element" to="/blog/1" ref={blogRef} />
         <NavBarLink
           style={BlogSpring}
           onMouseEnter={() => setBlogClicked(!blogClicked)}

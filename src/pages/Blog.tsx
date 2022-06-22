@@ -9,6 +9,18 @@ import Image3 from "../static/images/wp6.jpg";
 import Image4 from "../static/images/wp1.jpg";
 import ArticlePaginationBtn from "../components/ArticleButton/ArticlePaginationBtnLeft";
 import ArticlePaginationBtnRight from "../components/ArticleButton/ArticlePaginationBtnRight";
+import { articleClient } from "../client";
+
+const getArticle = async (num: number | string) => {
+  try {
+    const res = await articleClient.get(`/${num}`);
+    const data = await res.data;
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+    alert("There is an Error getting articles");
+  }
+};
 
 const ArticleWrapper = styled.div`
   flex-grow: 1;

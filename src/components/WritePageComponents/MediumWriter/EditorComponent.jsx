@@ -56,7 +56,7 @@ class App extends React.Component {
       isImageSpring: false,
       title: "",
       user: {},
-      file: "",
+      file: null,
     };
     this.changeState = this.changeState.bind(this);
   }
@@ -83,16 +83,16 @@ class App extends React.Component {
   }
 
   createArticle() {
-    const article = {
-      title: this.state.title,
-      image: this.state.isImage ? this.state.image : null,
-      file: this.state.file,
-      content: this.htmlToString(),
-    };
+    const formData = new FormData();
+    formData.append("title", this.state.title);
+    formData.append("image", this.state.isImage ? this.state.image : null);
+    formData.append("file", this.state.file);
+    formData.append("content", this.htmlToString());
     articleClient
-      .post("/create", article, {
+      .post("/create", formData, {
         headers: {
           Authorization: `Bearer ${this.props.user.token}`,
+          ContentType: "multipart/form-data",
         },
       })
       .then((res) => {
@@ -149,10 +149,9 @@ class App extends React.Component {
             accept="image/*"
             style={{ display: "none" }}
             id="contained-button-file"
-            onChange={async (e) => {
+            onChange={(e) => {
               const _file = e.target.files[0];
-              console.log(await _file.stream().getReader());
-              this.setState({ file: _file.stream() });
+              this.setState({ file: _file });
               this.setImage(URL.createObjectURL(_file));
               this.setIsImage(true);
               this.setState({ isImageSpring: true });
@@ -185,6 +184,7 @@ class App extends React.Component {
               if (_image !== null) {
                 this.setState({ image: _image });
                 this.setState({ isImage: true, isImageSpring: true });
+                this.setState({ file: window.sessionStorage.getItem("file") });
               }
             }}
           >
@@ -195,6 +195,7 @@ class App extends React.Component {
               window.sessionStorage.setItem("content", this.htmlToString());
               window.sessionStorage.setItem("title", this.state.title);
               window.sessionStorage.setItem("image", this.state.image);
+              window.sessionStorage.setItem("file", this.state.file);
             }}
           >
             save
