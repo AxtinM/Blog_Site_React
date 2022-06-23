@@ -9,6 +9,7 @@ const ArticleButtonDiv = styled.div`
   display: flex;
   align-items: center;
   font-family: spacy;
+  cursor: pointer;
   &:hover {
     border-color: #fff;
     color: #fff;

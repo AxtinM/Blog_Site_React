@@ -1,16 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import Article from "../components/Article";
 import { MainWrapper, SideWrapper } from "./MainBlog/BlogContent";
 import SideElements from "../components/side_page_components/SideElements";
-import Image from "../static/images/wp5.jpg";
-import Image2 from "../static/images/wp3.jpg";
-import Image3 from "../static/images/wp6.jpg";
-import Image4 from "../static/images/wp1.jpg";
 import ArticlePaginationBtn from "../components/ArticleButton/ArticlePaginationBtnLeft";
 import ArticlePaginationBtnRight from "../components/ArticleButton/ArticlePaginationBtnRight";
 import { articleClient } from "../client";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 
 const getArticle = async (num) => {
@@ -43,17 +39,19 @@ const ButtonsWrapper = styled.div`
 function Blog() {
   const { num } = useParams();
   const [data, setData] = useState(null);
+  const olderRef = useRef(null);
 
   useEffect(() => {
     getArticle(num)
       .then((res) => {
-        console.log(res.articles);
+        // console.log(res.articles);
         setData(res.articles);
       })
       .catch((err) => {
         console.log("ERR : ", err);
       });
-    console.log(data);
+
+    // console.log(data);
   }, []);
 
   return data === null ? (
@@ -66,8 +64,19 @@ function Blog() {
           <Article key={i} data={_article} />
         ))}
         <ButtonsWrapper>
-          <ArticlePaginationBtn style={undefined} />
-          <ArticlePaginationBtnRight />
+          <ArticlePaginationBtn
+            style={undefined}
+            onClick={() => {
+              console.log("older");
+            }}
+            place={`/blog/${parseInt(num) + 1}`}
+          />
+          <ArticlePaginationBtnRight
+            onClick={() => {
+              console.log("newer");
+            }}
+            place={`/blog/${parseInt(num) - 1}`}
+          />
         </ButtonsWrapper>
       </ArticleWrapper>
       <SideElements isThousand={undefined} />

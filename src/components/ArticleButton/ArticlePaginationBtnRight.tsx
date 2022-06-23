@@ -4,11 +4,26 @@ import {
   ArticleButtonDiv,
   ArticleLinkTag,
 } from "./ArticlePaginationBtnElements";
+import { NavLink } from "react-router-dom";
 
-function ArticlePaginationBtnRight() {
+function ArticlePaginationBtnRight({ place }) {
   return (
     <ArticleButtonDiv>
-      <ArticleLinkTag href="#">Newer posts</ArticleLinkTag>
+      <NavLink
+        style={{
+          display: "inline-block",
+          width: "100%",
+          fontSize: "1rem",
+          lineHeight: "1.5",
+          textAlign: "center",
+          textTransform: "uppercase",
+          padding: "8px 15px",
+          boxSizing: "border-box",
+        }}
+        to={place}
+      >
+        Newer posts
+      </NavLink>
       <ArrowRightTwoToneIcon />
     </ArticleButtonDiv>
   );
