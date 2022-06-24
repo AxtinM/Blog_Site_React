@@ -13,11 +13,11 @@ function MainRouter() {
       {/* <React.StrictMode> */}
       <Routes>
         <Route path="/" element={<MainBlogIndex />}>
-          <Route path="/" element={<BlogContent />} />
+          <Route exact path="/" element={<BlogContent />} />
           <Route path="/blog/:num" element={<Blog />} />
-          <Route path="/write" element={<WriteArticle />} />
+          <Route exact path="/write" element={<WriteArticle />} />
         </Route>
-        <Route path="/attigmohamed" element={<Home />} />
+        <Route exact path="/attigmohamed" element={<Home />} />
       </Routes>
       {/* </React.StrictMode> */}
     </Router>

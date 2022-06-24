@@ -2,12 +2,13 @@ import styled from "styled-components";
 
 const ArticleButtonDiv = styled.div`
   width: 18rem;
-  height: fit-content;
+  height: 2.5em;
   border: 3px solid #edededed;
   color: #edededed;
   background-color: #222831;
   display: flex;
   align-items: center;
+  justify-content: center;
   font-family: spacy;
   cursor: pointer;
   &:hover {

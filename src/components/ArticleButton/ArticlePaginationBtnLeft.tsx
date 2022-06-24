@@ -1,27 +1,13 @@
 import ArrowLeftTwoToneIcon from "@mui/icons-material/ArrowLeftTwoTone";
 import { ArticleButtonDiv } from "./ArticlePaginationBtnElements";
 import { NavLink } from "react-router-dom";
+import { useRef } from "react";
 
-function ArticlePaginationBtnLeft({ style, onClick, place }) {
+function ArticlePaginationBtnLeft({ onClick }) {
   return (
-    <ArticleButtonDiv style={style}>
+    <ArticleButtonDiv onClick={onClick}>
       <ArrowLeftTwoToneIcon />
-      <NavLink
-        to={place}
-        style={{
-          display: "inline-block",
-          width: "100%",
-          fontSize: "1rem",
-          lineHeight: "1.5",
-          textAlign: "center",
-          textTransform: "uppercase",
-          padding: "8px 15px",
-          boxSizing: "border-box",
-        }}
-        onClick={onClick}
-      >
-        older posts
-      </NavLink>
+      older posts
     </ArticleButtonDiv>
   );
 }

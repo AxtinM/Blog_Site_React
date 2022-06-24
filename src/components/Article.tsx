@@ -59,7 +59,7 @@ const ArticleMainContentDiv = styled.div`
 
 function Article(props) {
   const path: any = props.data.imageHeadline.path.split("/");
-  console.log(props.data);
+  // console.log(props.data);
   const _len: number = path.length - 1;
   return (
     <ArticleLocalWrapper>

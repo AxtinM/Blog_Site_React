@@ -39,7 +39,9 @@ const ButtonsWrapper = styled.div`
 function Blog() {
   const { num } = useParams();
   const [data, setData] = useState(null);
-  const olderRef = useRef(null);
+
+  const forwardRef = useRef(null);
+  const prevRef = useRef(null);
 
   useEffect(() => {
     getArticle(num)
@@ -51,10 +53,11 @@ function Blog() {
         console.log("ERR : ", err);
       });
 
+    console.log("now num is :::: ", num);
     // console.log(data);
   }, []);
 
-  return data === null ? (
+  return data === null || num == undefined ? (
     <Loading />
   ) : (
     <MainWrapper style={{ padding: "3em 0" }}>
@@ -64,19 +67,39 @@ function Blog() {
           <Article key={i} data={_article} />
         ))}
         <ButtonsWrapper>
-          <ArticlePaginationBtn
-            style={undefined}
-            onClick={() => {
-              console.log("older");
-            }}
-            place={`/blog/${parseInt(num) + 1}`}
+          <Link
+            to={`/blog/${parseInt(num) + 1}`}
+            ref={forwardRef}
+            style={{ display: "none" }}
           />
-          <ArticlePaginationBtnRight
-            onClick={() => {
-              console.log("newer");
-            }}
-            place={`/blog/${parseInt(num) - 1}`}
-          />
+          {data.length === 5 ? (
+            <ArticlePaginationBtn
+              onClick={() => {
+                forwardRef.current.click();
+                window.location.reload();
+              }}
+            />
+          ) : (
+            <></>
+          )}
+
+          {num != 1 ? (
+            <>
+              <Link
+                to={`/blog/${parseInt(num) - 1}`}
+                style={{ display: "none" }}
+                ref={prevRef}
+              />
+              <ArticlePaginationBtnRight
+                onClick={() => {
+                  prevRef.current.click();
+                  window.location.reload();
+                }}
+              />
+            </>
+          ) : (
+            <></>
+          )}
         </ButtonsWrapper>
       </ArticleWrapper>
       <SideElements isThousand={undefined} />

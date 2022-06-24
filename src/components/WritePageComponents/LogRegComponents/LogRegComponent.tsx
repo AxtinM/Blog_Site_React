@@ -12,7 +12,7 @@ import {
 import { authClient } from "../../../client";
 import { useSpring } from "react-spring";
 import { useDispatch } from "react-redux";
-import { selectError, handleError, login } from "../../../features/useSlices";
+import { handleError, login } from "../../../features/useSlices";
 
 import "../../../styles/write.css";
 

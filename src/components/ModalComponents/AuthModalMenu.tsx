@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useSpring } from "react-spring";
 import {
   ModalMenuWrapper,
@@ -13,8 +13,8 @@ import LabelInputComponent from "./LabelInputComponent";
 import "../../styles/modal.css";
 
 // redux
-import { useSelector, useDispatch } from "react-redux";
-import { selectError, handleError, login } from "../../features/useSlices";
+import { useDispatch } from "react-redux";
+import { handleError, login } from "../../features/useSlices";
 
 // client
 import { authClient } from "../../client";
