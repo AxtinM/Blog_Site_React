@@ -29,15 +29,15 @@ const SliderElementP = styled.p`
 
 const SliderAuthorName = styled.p`
   color: #ff2e63;
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: 300;
   font-family: spacy;
   margin: 10px 0;
 `;
 
 const SliderElementImg = styled.img`
-  width: 270px;
-  height: 270px;
+  width: 200px;
+  height: 200px;
   border-radius: ${(props) => (props.rounded ? "10px" : "0")};
   object-fit: cover;
   @media (max-width: 850px) {

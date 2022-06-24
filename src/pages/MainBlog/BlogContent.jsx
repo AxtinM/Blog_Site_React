@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 
 import SliderElement from "../../components/SliderElement";
@@ -13,6 +13,9 @@ import "swiper/css/scrollbar";
 import SideElements from "../../components/side_page_components/SideElements";
 import ArticlePaginationBtnLeft from "../../components/ArticleButton/ArticlePaginationBtnLeft";
 import { useWindowSize } from "../../components/RightMenu/profileMenu/Profile";
+import { getArticle } from "../Blog";
+import { Link } from "react-router-dom";
+import Loading from "../../components/Loading";
 
 const DATA = [
   {
@@ -122,17 +125,22 @@ const SideWrapper = styled.div((props) => ({
 // }));
 
 function MainBlog() {
-  let arr = [
-    <BlogAricleElement />,
-    <BlogAricleElement />,
-    <BlogAricleElement />,
-    <BlogAricleElement />,
-    <BlogAricleElement />,
-    <BlogAricleElement />,
-  ];
+  const [data, setData] = useState(null);
+  const forwardRef = useRef(null);
 
   const [width, height] = useWindowSize();
   const [isThousand, setIsThousand] = useState(false);
+  useEffect(() => {
+    getArticle(1)
+      .then((res) => {
+        setData(res.articles);
+        console.log(data);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }, []);
+
   useEffect(() => {
     if (width < 1000) {
       setIsThousand(true);
@@ -179,12 +187,18 @@ function MainBlog() {
             <BlogHeader>Recent Articles</BlogHeader>
           </BlogHeaderWrapper>
           <BlogHeaderDevider></BlogHeaderDevider>
-          {arr.slice(0, 5).map((x) => (
-            <BlogAricleElement />
-          ))}
+          {data !== null ? (
+            data.map((data, i) => <BlogAricleElement data={data} key={i} />)
+          ) : (
+            <Loading />
+          )}
+          <Link to="/blog/2" style={{ display: "none" }} ref={forwardRef} />
           <ArticlePaginationBtnLeft
             style={{
               marginTop: "2em",
+            }}
+            onClick={() => {
+              forwardRef.current.click();
             }}
           />
         </Articles>

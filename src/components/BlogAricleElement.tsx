@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import React from "react";
 import {
   SliderElementImg,
   SliderElementH1,
   SliderElementP,
   SliderAuthorName,
 } from "./SliderElement";
-import ImageArticle from "../static/images/pc_image.jpg";
 
 const BlogArticleWrapper = styled.div`
   display: flex;
@@ -15,19 +13,22 @@ const BlogArticleWrapper = styled.div`
   height: fit-content;
   margin-left: 5px;
   margin-bottom: 4em;
+  margin-top: 1em;
   width: 45rem;
 `;
 const TextContentWrapper = styled.div`
   margin-left: 20px;
 `;
 
-function BlogAricleElement() {
+function BlogAricleElement({ data }) {
+  const path: any = data.imageHeadline.path.split("/");
+  const _len: number = path.length - 1;
   return (
     <BlogArticleWrapper>
-      <SliderElementImg src={ImageArticle} />
+      <SliderElementImg src={`http://localhost:8000/images/${path[_len]}`} />
       <TextContentWrapper>
         {/* @ts-ignore */}
-        <SliderElementH1 noMarginTop>Article 1</SliderElementH1>
+        <SliderElementH1>{data.title}</SliderElementH1>
         <span
           className="author-name"
           style={{
@@ -39,14 +40,11 @@ function BlogAricleElement() {
             alignItems: "center",
           }}
         >
-          By |<SliderAuthorName>Mostfa</SliderAuthorName>
+          By |<SliderAuthorName>{`@${data.author.username}`}</SliderAuthorName>
         </span>
-        <SliderElementP>
-          simply dummy text of the printing and typesetting industry. Lorem
-          Ipsum has been the industry's standard dummy text ever since the
-          1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book
-        </SliderElementP>
+        {/* <SliderElementP>
+          {data.porps.content}
+        </SliderElementP> */}
       </TextContentWrapper>
     </BlogArticleWrapper>
   );

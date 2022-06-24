@@ -9,7 +9,7 @@ import { articleClient } from "../client";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 
-const getArticle = async (num) => {
+export const getArticle = async (num) => {
   try {
     const res = await articleClient.get(`/${num}`);
     const data = await res.data;
