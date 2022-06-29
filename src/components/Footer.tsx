@@ -55,7 +55,7 @@ function Footer() {
   return (
     <FooterWrapper>
       <FooterDivisionWrapper>
-        <FooterAndromeda>Axtin</FooterAndromeda>
+        <FooterAndromeda>(Ax)Blog</FooterAndromeda>
         <FooterLinksDiv>
           <FooterLink href="#">Blog</FooterLink>
           <FooterLink href="#">About</FooterLink>
@@ -65,7 +65,7 @@ function Footer() {
         <EmptyDiv />
       </FooterDivisionWrapper>
       <FooterCopyWriteText>
-        Copyright © 2022 - 2022 | M.Attig (Ax) | Axtin .
+        Copyright © 2022 | Mohamed Attig | Axton (Ax) .
       </FooterCopyWriteText>
     </FooterWrapper>
   );
