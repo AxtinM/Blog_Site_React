@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../features/useSlices";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import { logout } from "../features/useSlices";
 
 const persistConfig = {
   key: "root",
@@ -17,3 +18,8 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+export const clearStorage = async (cb) => {
+  await persistor.purge();
+  return cb();
+};

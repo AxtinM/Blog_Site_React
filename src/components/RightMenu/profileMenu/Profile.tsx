@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   ProfileCircle,
   ProfileImage,
@@ -7,7 +7,6 @@ import {
   InsideMenuWrapper,
   Element,
   ButtonChangeImg,
-  ImageInput,
 } from "./ProfileComponents";
 import ProfileImg from "../../../static/images/ProfilePic.png";
 import { useSpring } from "react-spring";
@@ -15,6 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../../features/useSlices";
 import { logout } from "../../../features/useSlices";
 import { authClient } from "../../../client";
+import { clearStorage } from "../../../app/store";
 
 export const useWindowSize = () => {
   const [size, setSize] = useState([0, 0]);
@@ -31,7 +31,7 @@ export const useWindowSize = () => {
 
 function Profile() {
   const [profileMenu, setProfileMenu] = useState(false);
-  const [elementHovered, setElementHovered] = useState(false);
+  const [isImage, setIsImage] = useState(false);
   const [width, height] = useWindowSize();
 
   const ProfileMenuSpring = useSpring({
@@ -50,27 +50,61 @@ function Profile() {
 
   const inputRef = useRef(null);
 
-  useEffect(() => {
-    if (imageUrl) {
-      setImageUrl(imageUrl);
-    }
-  }, [imageUrl]);
+  // useEffect(() => {
+  //   if (imageUrl) {
+  //     setImageUrl(imageUrl);
+  //   }
+  // }, [imageUrl]);
 
   const dispatch = useDispatch();
-
   const handleLogout = async () => {
-    const res = await authClient.post(
-      "/logout",
-      {},
-      {
-        headers: { Authorization: `Bearer ${user.user.token}` },
-      }
-    );
-    const data = await res.data;
-    if (data.success) {
-      dispatch(logout());
+    try {
+      const res = await authClient.post(
+        "/logout",
+        {},
+        {
+          headers: { Authorization: `Bearer ${user.user.token}` },
+        }
+      );
+      const data = await res.data;
+      await clearStorage(dispatch(logout()));
+    } catch (err) {
+      alert("error loging out !");
     }
   };
+  const handleUpdate = async () => {
+    try {
+      const formData = new FormData();
+
+      formData.append("file", imageUrl);
+
+      const res = await authClient.post("/update_image", formData, {
+        headers: {
+          Authorization: `Bearer ${user.user.token}`,
+        },
+      });
+      console.log("Response --------- \n ", res);
+      const data = await res.data;
+      console.log(data);
+      return data;
+    } catch (err) {
+      console.log("err : ", err);
+    }
+  };
+
+  useEffect(() => {
+    if (isImage === true) {
+      handleUpdate()
+        .then((res) => {
+          setImageUrl(res.image);
+          alert(res.message);
+        })
+        .catch((err) => {
+          alert(err);
+        });
+      setIsImage(false);
+    }
+  }, [isImage]);
 
   return (
     <>
@@ -87,7 +121,8 @@ function Profile() {
             id="contained-button-file"
             onChange={(e) => {
               const file = e.target.files[0];
-              setImageUrl(URL.createObjectURL(file));
+              setImageUrl(file);
+              setIsImage(true);
             }}
           />
 
@@ -102,6 +137,7 @@ function Profile() {
           <ButtonChangeImg
             onClick={() => {
               handleLogout();
+              // window.location.reload();
             }}
           >
             LogOut

@@ -6,6 +6,7 @@ import MainBlogIndex from "./pages/MainBlog/MainBlogIndex";
 import BlogContent from "./pages/MainBlog/BlogContent";
 import Blog from "./pages/Blog";
 import WriteArticle from "./pages/WritePage/WriteArticle";
+import ArticlePage from "./pages/MainBlog/ArticlePage";
 
 function MainRouter() {
   return (
@@ -16,6 +17,7 @@ function MainRouter() {
           <Route exact path="/" element={<BlogContent />} />
           <Route path="/blog/:num" element={<Blog />} />
           <Route exact path="/write" element={<WriteArticle />} />
+          <Route path="/article/:id" element={<ArticlePage />} />
         </Route>
         <Route exact path="/attigmohamed" element={<Home />} />
       </Routes>

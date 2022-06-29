@@ -52,9 +52,13 @@ const ArticleUnderHeaderP = styled.p`
 
 const ArticleMainContentDiv = styled.div`
   height: fit-content;
-  width: 100%;
+  max-height: 590px;
+  width: 97%;
   margin: 1em 0;
   padding: 0 1em;
+  overflow: hidden;
+  text-overflow: " [..]";
+  box-sizing: border-box;
 `;
 
 function Article(props) {
@@ -79,11 +83,21 @@ function Article(props) {
         <ArticleMainContentDiv>
           {parse(props.data.content)}
         </ArticleMainContentDiv>
+        <span
+          style={{
+            display: "inline-block",
+            fontSize: 20,
+            marginLeft: "2em",
+            fontWeight: "bold",
+          }}
+        >
+          {"------->"}
+        </span>
         <NavLink
-          to="/article/1"
+          to={`/article/${props.data._id}`}
           style={{
             color: "#ff2e63",
-            margin: "0 2em",
+            margin: "0 1em",
             fontSize: "1.1em",
             fontFamily: "spacy",
           }}
